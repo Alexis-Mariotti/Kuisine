@@ -32,6 +32,6 @@ jobs:
           sudo docker rm kuisine
           sudo docker rmi kuisine
           sudo docker build -t kuisine .
-          sudo docker run --name kuisine -p 3000:3000 -e SECRET_KEY_BASE=${{ secrets.RAILS_SECRET_KEY_BASE }} kuisine
+          sudo docker run -d --name kuisine -p 3000:3000 -e SECRET_KEY_BASE=${{ secrets.RAILS_SECRET_KEY_BASE }} kuisine
           exit
           ENDSSH
