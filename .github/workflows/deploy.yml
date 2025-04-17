@@ -28,9 +28,9 @@ jobs:
           sshpass ssh -tt ${{ secrets.USER }}@${{ secrets.HOST }} -i ~/.ssh/kuisine.key <<'ENDSSH'
           cd ${{ secrets.KUISINE_PATH }}
           git pull
-          sudo docker stop $(docker ps -aq)
-          docker rm -vf $(docker ps -aq)
-          docker rmi -f $(docker images -aq)
+          sudo docker stop $(sudo docker ps -aq)
+          sudo docker rm -vf $(sudo docker ps -aq)
+          sudo docker rmi -f $(sudo docker images -aq)
           sudo docker build -t kuisine .
           sudo docker run -d --name kuisine -p 3000:3000 -e SECRET_KEY_BASE=${{ secrets.RAILS_SECRET_KEY_BASE }} kuisine
           exit
