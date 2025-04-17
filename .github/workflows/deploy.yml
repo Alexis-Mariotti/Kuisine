@@ -24,7 +24,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh ${{ secrets.USER }}@${{ secrets.HOST }} -i ~/.ssh/kuisine.key
+          ssh -tt ${{ secrets.USER }}@${{ secrets.HOST }} -i ~/.ssh/kuisine.key
           cd ${{ secrets.KUISINE_PATH }}
           git pull
           sudo docker stop kuisine
