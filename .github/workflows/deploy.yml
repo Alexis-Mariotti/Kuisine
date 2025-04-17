@@ -1,0 +1,36 @@
+name: Deploy to server
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        run: |
+          env
+          mkdir -p ~/.ssh
+          touch ~/.ssh/kuisine.key
+          echo "${{ secrets.KUISINE_SSH_KEY }}" > ~/.ssh/kuisine.key
+          chmod 600 ~/.ssh/kuisine.key
+          ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          ssh ${{ secrets.USER }}@${{ secrets.HOST }} -i ~/.ssh/kuisine.key
+          cd ${{ secrets.KUISINE_PATH }}
+          git pull
+          sudo docker stop kuisine
+          sudo docker rm kuisine
+          sudo docker rmi kuisine
+          sudo docker build -t kuisine .
+          sudo docker run --name kuisine -it -p 3000:3000 -e SECRET_KEY_BASE=${{ secrets.RAILS_SECRET_KEY_BASE }} kuisine
+          exit
+
