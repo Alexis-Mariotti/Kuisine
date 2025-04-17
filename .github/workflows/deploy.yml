@@ -21,10 +21,11 @@ jobs:
           echo "${{ secrets.KUISINE_SSH_KEY }}" > ~/.ssh/kuisine.key
           chmod 600 ~/.ssh/kuisine.key
           ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+          sudo apt-get install sshpass
 
       - name: Deploy to server
         run: |
-          ssh -tt ${{ secrets.USER }}@${{ secrets.HOST }} -i ~/.ssh/kuisine.key
+          sshpass ssh -tt ${{ secrets.USER }}@${{ secrets.HOST }} -i ~/.ssh/kuisine.key <<'ENDSSH'
           cd ${{ secrets.KUISINE_PATH }}
           git pull
           sudo docker stop kuisine
@@ -33,4 +34,4 @@ jobs:
           sudo docker build -t kuisine .
           sudo docker run --name kuisine -it -p 3000:3000 -e SECRET_KEY_BASE=${{ secrets.RAILS_SECRET_KEY_BASE }} kuisine
           exit
-
+          ENDSSH
