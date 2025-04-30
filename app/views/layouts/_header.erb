@@ -1,3 +1,15 @@
 <header>
   <h1><a href='/'><%= image_tag 'logo_kuisine_full.png', class: 'logo', alt: 'Kuisine' %></a></h1>
+
+  <%= yield :header %>
+
+  <%# connexion section %>
+  <nav class="connexion">
+    <%= login_button %>
+    <%= register_button %>
+  </nav>
 </header>
+
+<%= turbo_frame_tag :flash do %>
+  <%= render 'shared/flashes' %>
+<% end %>

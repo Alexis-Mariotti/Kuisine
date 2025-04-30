@@ -39,4 +39,12 @@ module ApplicationHelper
       link_to "Inscription", signup_path, class: "btn btn-primary"
     end
   end
+
+
+  # recommended to be used with sanitize
+  def show_alert(type:, message:, icon:)
+    tag.div(type:, class: 'alert alert-primary') do
+      "#{tag.i(class:"bi bi-#{icon}" )}#{message}".html_safe
+    end
+  end
 end
