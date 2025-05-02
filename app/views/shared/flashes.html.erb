@@ -1,0 +1,11 @@
+$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+  $("#success-alert").slideUp(500);
+});
+
+
+<% flash.each do |type, hash| %>
+  <div style="margin: 1rem 0;"></div>
+  <%=
+    show_alert(type: type, message: hash, icon: 'exclamation')
+  %>
+<% end %>
