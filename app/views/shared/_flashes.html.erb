@@ -1,0 +1,6 @@
+<% flash.each do |type, hash| %>
+  <div style="margin: 1rem 0;"></div>
+  <%=
+    show_alert(type: type, message: hash, icon: '')
+  %>
+<% end %>

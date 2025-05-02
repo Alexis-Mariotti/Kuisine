@@ -4,9 +4,9 @@ source "https://rubygems.org"
 # we use mongo db as our database so we need mongoid
 gem "mongoid"
 
-# we use bootstrap for our css framework
-gem 'bootstrap', '~> 5.3.3'
-gem 'jquery-rails'
+# we use shoelace
+gem 'webpacker'
+gem 'shoelace-rails'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"

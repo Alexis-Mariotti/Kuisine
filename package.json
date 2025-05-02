@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "5.4.4",
+    "@shoelace-style/shoelace": "^2.20.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "devDependencies": {
+    "webpack-dev-server": "^3"
+  }
+}

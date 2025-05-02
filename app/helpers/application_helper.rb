@@ -27,7 +27,7 @@ module ApplicationHelper
   # methode to display the login button or logout button
   def login_button
     if logged_in?
-      button_to "Déconnexion", logout_path, method: :delete, class: "btn btn-danger"
+      sl_button_to "Déconnexion", logout_path, method: :delete, class: "btn btn-danger"
     else
       link_to "Connexion", login_path, class: "btn btn-primary"
     end
@@ -40,11 +40,10 @@ module ApplicationHelper
     end
   end
 
-
-  # recommended to be used with sanitize
+  # method to display flash messages with shoelace
   def show_alert(type:, message:, icon:)
-    tag.div(type:, class: 'alert alert-primary') do
-      "#{tag.i(class:"bi bi-#{icon}" )}#{message}".html_safe
+    tag.sl_alert(type:, open: true, closable: true, duration: '1500') do
+      "#{tag.sl_icon(nil, slot: 'icon', name: icon)}#{message}".html_safe
     end
   end
 end
