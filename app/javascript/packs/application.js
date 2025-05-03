@@ -4,10 +4,8 @@ import "@hotwired/turbo-rails"
 import "controllers/index"
 
 import '../../assets/stylesheets/application.scss';
+/**
 import { setBasePath, SlAlert } from '@shoelace-style/shoelace'
-
-// ...
-
 const rootUrl = document.currentScript.src.replace(/\/packs.*$/, '')
 
 // Path to the assets folder (should be independent from the current script source path
@@ -22,3 +20,4 @@ setAssetPath(document.currentScript.src)
 // Check out the webpack documentation below on selective imports.
 // https://shoelace.style/getting-started/installation?id=using-webpack
 defineCustomElements()
+**/
