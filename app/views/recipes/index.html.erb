@@ -1,0 +1,11 @@
+<h1>Mes recettes</h1>
+
+<%= link_to "Nouvelle recette", new_recipe_path %>
+
+<%= turbo_frame_tag "recipes" do %>
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <%= render "recipe_in_list", recipe: recipe %>
+    <% end %>
+  </ul>
+<% end %>
