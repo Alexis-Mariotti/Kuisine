@@ -7,6 +7,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    # check if email already exists
+    if User.where(email: @user.email).exists?
+      flash.now[:alert] = "L'email est déjà utilisé"
+      render :new
+      return
+    end
+
     # validate password confirmation
     if password_validation
       if @user.save

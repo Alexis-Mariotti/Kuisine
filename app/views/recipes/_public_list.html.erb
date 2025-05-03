@@ -1,0 +1,9 @@
+<ul>
+  <% recipes.each do |recipe| %>
+    <%= render partial: "recipe_in_public_list", locals: { recipe: recipe } %>
+  <% end %>
+</ul>
+
+<% if recipes.empty? %>
+  <p>On dirais que c'est calme ici :/</p>
+<% end %>

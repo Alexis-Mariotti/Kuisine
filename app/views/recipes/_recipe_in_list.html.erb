@@ -1,0 +1,14 @@
+<%= turbo_frame_tag dom_id(recipe) do %>
+  <li>
+    <strong><%= link_to recipe.title, recipe_path(recipe), data: { turbo_frame: "_top" } %></strong>
+    |
+     <% if recipe.is_public %>
+      <%= "Publique" %>
+    <% else %>
+      <%= "Privée" %>
+    <% end %>
+    |
+    <%= link_to "Supprimer", recipe_path(recipe), method: :delete,
+                data: { turbo_confirm: "Supprimer cette recette ?", turbo_method: :delete } %>
+  </li>
+<% end %>

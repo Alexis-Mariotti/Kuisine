@@ -1,0 +1,8 @@
+<h1>Modifier la recette</h1>
+
+<%= turbo_frame_tag @recipe do %>
+  <%= render "form", locals: { recipe: @recipe} %>
+  <%= link_to "Retour", recipe_path(@recipe) %>
+<% end %>
+
+

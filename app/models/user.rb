@@ -11,6 +11,9 @@ class User
 
   #todo: add avatars
 
+  # Associations
+  has_many :recipes, dependent: :destroy
+
 
   attr_accessor :password, :password_confirmation
 

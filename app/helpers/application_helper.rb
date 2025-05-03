@@ -46,4 +46,14 @@ module ApplicationHelper
       "#{tag.sl_icon(nil, slot: 'icon', name: icon)}#{message}".html_safe
     end
   end
+
+  # link to public recepies list
+  def public_recipes_link
+    link_to "Recettes publiques", public_recipes_path, class: "btn btn-primary"
+  end
+
+  # link to user recipes list
+  def recipes_index_link
+    link_to "Mes recettes", recipes_path, class: "btn btn-primary"
+  end
 end

@@ -1,0 +1,4 @@
+<%=  turbo_stream.replace "h1" do %>
+  <h1><%= @recipe.title %></h1>
+<% end %>
+<%= turbo_stream.replace dom_id(@recipe), partial: "recipes/recipe", locals: { recipe: @recipe } %>

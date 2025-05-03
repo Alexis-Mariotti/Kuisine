@@ -8,7 +8,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- This refers to app/javascript/stylesheets/application.scss-->
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <%= yield :head %>
@@ -27,11 +32,6 @@
 
   <body>
     <%= render "layouts/header" %>
-    <sl-alert open>
-      <sl-icon slot="icon" name="info-circle"></sl-icon>
-      This is a standard alert. You can customize its content and even the icon.
-    </sl-alert>
-
     <%= yield %>
   </body>
 </html>

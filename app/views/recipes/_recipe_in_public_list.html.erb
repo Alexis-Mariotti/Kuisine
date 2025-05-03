@@ -1,0 +1,6 @@
+
+<%= turbo_frame_tag recipe do %>
+  <li>
+    <strong><%= link_to recipe.title, recipe_path(recipe), data: { turbo_frame: "_top" } %></strong>
+  </li>
+<% end %>

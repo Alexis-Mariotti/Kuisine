@@ -1,0 +1,30 @@
+<%= form_with model: @recipe do |f| %>
+
+  <%# handling error messages %>
+  <%# errors messages are stored into an array of strings %>
+  <% if defined? @error_messages&.any? %>
+    <%= display_form_errors(@error_messages) %>
+  <% end %>
+
+  <div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  </div>
+
+  <div>
+  <%= f.label :ingredients %>
+  <%= f.text_area :ingredients %>
+  </div>
+
+  <div>
+  <%= f.label :instructions %>
+  <%= f.text_area :instructions %><br>
+  </div>
+
+  <div>
+  <%= f.label :is_public, "Rendre la recette publique ?" %>
+  <%= f.check_box :is_public %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

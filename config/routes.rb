@@ -24,4 +24,9 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+
+
+  # routes for recipes
+  resources :recipes
+  get 'public/recipes', to: 'recipes#public', as: :public_recipes
 end
