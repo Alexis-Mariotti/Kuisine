@@ -11,6 +11,13 @@ class RecipesController < ApplicationController
 
   # page to display a recipe
   def show
+    # add a view to the recipe
+    # Views are only counted for public recipes
+    if @recipe.is_public
+      # add the current date to the views array
+      # We save the date to be capable to display the number of views in a specific period
+      @recipe.push(views: Time.current)
+    end
   end
 
   # page to create a new recipe
@@ -84,7 +91,9 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :ingredients, :instructions, :id_public)
+    params.require(:recipe).permit(:title, :instructions, :id_public,
+                                   # _destroy is used to delete an ingredient
+                                   ingredients_attributes: [:id, :name, :_destroy])
   end
 
   def set_recipe
@@ -110,6 +119,7 @@ class RecipesController < ApplicationController
       @error_messages << "Veuillez donner un titre à la recette, ça serait dommage de ne pas nomer une telle merveille"
     end
 
+    puts params.inspect
     if @recipe.ingredients.blank?
       @error_messages << "Aller, il faut bien des ingrédients pour faire une recette, non ?"
     end

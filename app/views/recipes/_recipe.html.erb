@@ -1,12 +1,18 @@
-<section class="visibility">
-  <% if recipe.is_public %>
-    <%= "Publique" %>
-  <% else %>
-    <%= "Privée" %>
-  <% end %>
-</section>
+<%# use helper method to display visibility section %>
+<%= visibility_section(recipe) %>
+
 <section class="recipe_content">
-  <p><strong>Ingrédients :</strong><%= simple_format(@recipe.ingredients) %></p>
+  <%# ingredients section %>
+  <section class="ingredient_section">
+    <h2>Ingrédients : </h2>
+    <ul class="ingredients_list">
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li>
+          <%= render partial: "ingredients/ingredient", locals: { ingredient: ingredient } %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
   <p><strong>Instructions :</strong><%= simple_format(@recipe.instructions) %></p>
 </section>
 <%= link_to "Modifier", edit_recipe_path(@recipe) %> |

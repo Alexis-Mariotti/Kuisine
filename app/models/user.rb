@@ -13,6 +13,7 @@ class User
 
   # Associations
   has_many :recipes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 
   attr_accessor :password, :password_confirmation

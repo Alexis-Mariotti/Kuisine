@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  post 'test_turbo', to: 'home#test_turbo'
+  #post 'test_turbo', to: 'home#test_turbo'
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
@@ -29,4 +29,11 @@ Rails.application.routes.draw do
   # routes for recipes
   resources :recipes
   get 'public/recipes', to: 'recipes#public', as: :public_recipes
+  # routes for ingredients
+  # ingredients search with spoonacular API
+  get 'ingredients/search', to: 'ingredients#search_spoonacular_ingredients'
+  # routes for comments
+  resources :recipes do
+    resources :comments, only: [:create, :destroy]
+  end
 end

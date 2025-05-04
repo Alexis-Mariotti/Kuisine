@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "new_comment" do %>
+  <%= form_with model: [recipe, Comment.new], data: { turbo_frame: "comments" } do |f| %>
+    <div>
+      <%= f.text_area :content, placeholder: "Ajouter un commentaire..." %>
+    </div>
+    <%= f.submit "Publier" %>
+  <% end %>
+<% end %>

@@ -27,7 +27,7 @@ module ApplicationHelper
   # methode to display the login button or logout button
   def login_button
     if logged_in?
-      sl_button_to "Déconnexion", logout_path, method: :delete, class: "btn btn-danger"
+      button_to "Déconnexion", logout_path, method: :delete, class: "btn btn-danger"
     else
       link_to "Connexion", login_path, class: "btn btn-primary"
     end

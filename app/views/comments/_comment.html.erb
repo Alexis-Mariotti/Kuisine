@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(comment) do %>
+  <div class="comment">
+    <strong><%= comment.user.username %></strong> :
+    <%= comment.content %>
+
+    <% if current_user == comment.user || current_user == comment.recipe.user %>
+      <%= button_to "Supprimer", recipe_comment_path(comment.recipe, comment),
+                    method: :delete, data: { turbo_confirm: "Supprimer ce commentaire ?" },
+                    form: { data: { turbo_stream: true } } %>
+    <% end %>
+  </div>
+<% end %>

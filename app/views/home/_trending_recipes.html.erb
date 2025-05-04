@@ -1,0 +1,10 @@
+<section class="trending-recipes-section">
+  <h2>Recettes tendance cette semaine</h2>
+
+  <div id="trending-recipes">
+    <% trending_recipes.each do |recipe| %>
+      <%# render the card preview of the recipes %>
+      <%= render partial: "recipes/public_recipe_card", locals: { recipe: recipe } %>
+    <% end %>
+  </div>
+</section>

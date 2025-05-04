@@ -1,5 +1,5 @@
 const { environment } = require('@rails/webpacker');
-
+/*
 // Shoelace config
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -17,5 +17,5 @@ environment.plugins.append(
         ]
     })
 );
-
+*/
 module.exports = environment;
