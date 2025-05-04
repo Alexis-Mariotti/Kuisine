@@ -1,0 +1,3 @@
+<%= turbo_stream.append "comments", partial: "comments/comment", locals: { comment: @comment } %>
+<%# clear the comment form %>
+<%= turbo_stream.replace "new_comment", partial: "comments/form", locals: { recipe: @recipe } %>

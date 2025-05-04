@@ -1,23 +1,7 @@
 <% body_class "index" %>
 
-<%# REMOVE THIS STIMULUS CONTROLLER, IT'S JUST FOR VERIFY IF STIMULUS IS WORKING %>
-<div data-controller="hello">
-</div>
-
-<%= turbo_frame_tag "test_turbo" do %>
-  <p>ajoute un pote</p>
-
-  <form action="<%= test_turbo_path %>" method="post">     <input type="text" name="name" placeholder="Nom">      <input type="submit" value="Ajouter">   </form>
-  <% form_with url: test_turbo_path, method: :post, data: { turbo_frame: "test_turbo" } do |f| %>
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <%end %>
-<% end %>
+<%# render the trending recipes (3 most viewed of the week %>
+<%= render partial: 'trending_recipes', locals: { trending_recipes: @trending_recipes } %>
 
 <%# loggin and register button %>
 <nav>

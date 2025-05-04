@@ -1,5 +1,11 @@
 <%= form_with(model: user) do |form| %>
 
+  <%# handling error messages %>
+  <%# errors messages are stored into an array of strings %>
+  <% if defined? @error_messages&.any? %>
+    <%= display_form_errors(@error_messages) %>
+  <% end %>
+
   <div>
     <%= form.label :username, style: "display: block" %>
     <%= form.text_field :username %>
@@ -21,6 +27,6 @@
   </div>
 
   <div>
-    <%= form.submit "Créer un compte" %>
+    <%= form.submit "Créer un compte", data: { turbo: false } %>
   </div>
 <% end %>

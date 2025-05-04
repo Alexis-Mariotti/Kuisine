@@ -8,7 +8,7 @@
     <%= login_button %>
     <%= register_button %>
     <%= public_recipes_link %>
-    <%= recipes_index_link %>
+    <%= recipes_index_link if logged_in? %>
   </nav>
 </header>
 

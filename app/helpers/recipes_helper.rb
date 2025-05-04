@@ -8,4 +8,15 @@ module RecipesHelper
     html_message += "</ul></div>"
     html_message.html_safe
   end
+
+  def visibility_section(recipe)
+    content_tag(:section, class: "visibility") do
+      if recipe.is_public
+        content_tag(:span, "Publique", class: "visibility_label") +
+          content_tag(:span, "#{recipe.total_views} vues", class: "views_count")
+      else
+        content_tag(:span, "Privée", class: "visibility_label")
+      end
+    end
+  end
 end

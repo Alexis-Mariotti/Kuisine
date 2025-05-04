@@ -4,7 +4,7 @@ development:
     # Defines the default client. (required)
     default:
       # Mongoid can connect to a URI accepted by the driver:
-      uri: mongodb+srv://alexis:Alexis2003@ussi0s.pjb4k.mongodb.net/kuisine?retryWrites=true&w=majority&tls=true
+      uri: <%= Rails.application.credentials.mongoid_uri %>
 
       # Otherwise define the parameters separately.
       # This defines the name of the default database that Mongoid can connect to.
@@ -301,4 +301,4 @@ test:
 production:
   clients:
     default:
-      uri: mongodb+srv://alexis:veaeo4RHAcdEDq35@ussi0s.pjb4k.mongodb.net/?retryWrites=true&w=majority&appName=USSI0S
+      uri: <%= Rails.application.credentials.mongoid_uri %>

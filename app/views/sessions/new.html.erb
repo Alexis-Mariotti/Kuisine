@@ -1,5 +1,12 @@
 <h1>Connexion</h1>
 <%= form_with url: login_path do %>
+
+  <%# handling error messages %>
+  <%# errors messages are stored into an array of strings %>
+  <% if defined? @error_messages&.any? %>
+    <%= display_form_errors(@error_messages) %>
+  <% end %>
+
   <%= label_tag :email %><br>
   <%= text_field_tag :email %><br>
 
