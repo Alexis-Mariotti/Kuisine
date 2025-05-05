@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  get 'unauthorized', to: 'home#unauthorized'
+
   #post 'test_turbo', to: 'home#test_turbo'
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)

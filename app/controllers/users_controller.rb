@@ -1,5 +1,6 @@
 # This controller handles user registration.
 class UsersController < ApplicationController
+  load_and_authorize_resource
   def new
     @error_messages = []
     @user = User.new

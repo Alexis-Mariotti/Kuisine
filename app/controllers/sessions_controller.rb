@@ -11,8 +11,13 @@ class SessionsController < ApplicationController
 
     user = User.where(email: params[:email]).first
     if user && user.authenticate(params[:password])
+      # add the user to the session variable
       session[:user_id] = user.id.to_s
-      redirect_to root_path, notice: "Connecté"
+
+      respond_to do |format|
+        format.turbo_stream { render partial: "shared/redirect", locals: { url: root_path }, notice: "Connecté" }
+        format.html {redirect_to root_path, notice: "Connecté"}
+      end
     else
       puts "YYYYY"
       # add the error message

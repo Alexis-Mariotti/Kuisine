@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :require_login, only: [:create, :destroy]
   before_action :set_recipe
   before_action :set_comment, only: [:destroy]
