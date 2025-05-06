@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-
+  load_and_authorize_resource
 
   # This method is used to interogate the spoonacular API to get the ingredients
   def search_spoonacular_ingredients

@@ -30,6 +30,19 @@ class User
     Digest::SHA256.hexdigest(password_salt + submitted_password) == password_hash
   end
 
+  # Checks if the user is logged in
+  # @return [Boolean] True if the user is logged in, false otherwise
+  def is_logged_in?
+    !email.nil?
+  end
+
+  # Checks if the user is an admin
+  # @return [Boolean] True if the user is an admin, false otherwise
+  def admin?
+    # at this time the role is defined manually and it's work because we use nosql database
+    defined? role && role == "admin"
+  end
+
   private
 
   # Encrypts the password using SHA256 and a random salt

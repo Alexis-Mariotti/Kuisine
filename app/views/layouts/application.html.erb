@@ -29,6 +29,8 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <%# to permit redirect with turbo %>
+  <%= turbo_frame_tag "turbo_redirect" %>
 
   <body>
     <%= render "layouts/header" %>

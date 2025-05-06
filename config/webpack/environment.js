@@ -18,4 +18,8 @@ environment.plugins.append(
     })
 );
 */
+
+// setting modern sass-loader
+//environment.loaders.get('sass').use.find(item => item.loader === 'sass-loader').options = {api: "modern-compiler", sassOptions: {}};
+
 module.exports = environment;

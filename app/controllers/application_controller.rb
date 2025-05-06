@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
-
+  # redirect to a special page if the user perform an action without the permission
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to unauthorized_path
+  end
 
   # method to add the logged user in @current_user variable
   def current_user
@@ -18,5 +21,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def unauthorized
+    respond_to do |format|
+      format.turbo_stream { render partial: "shared/redirect", locals: { url: root_path }}
+      format.html { render "unauthorized" }
+    end
+  end
 
 end
