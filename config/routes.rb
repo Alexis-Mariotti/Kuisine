@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   get 'unauthorized', to: 'home#unauthorized'
 
+  # for pwa
+  get '/service-worker.js' => 'service_worker#service_worker'
+  get '/manifest.json' => 'service_worker#manifest'
+
   #post 'test_turbo', to: 'home#test_turbo'
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
