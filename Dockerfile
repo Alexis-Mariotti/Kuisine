@@ -34,6 +34,7 @@ COPY . .
 # Bootsnap & assets
 RUN bundle exec bootsnap precompile app/ lib/
 
+
 # Précompile les assets sans secrets
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
