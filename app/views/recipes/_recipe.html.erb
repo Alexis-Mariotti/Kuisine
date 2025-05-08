@@ -15,5 +15,13 @@
   </section>
   <p><strong>Instructions :</strong><%= simple_format(@recipe.instructions) %></p>
 </section>
-<%= link_to "Modifier", edit_recipe_path(@recipe) %> |
-<%= link_to "Retour", recipes_path, data: { turbo_frame: "_top" } %>
+<div class="actions-buttons" style="display: flex">
+  <% if can?(:edit, @recipe) %>
+    <%= link_to "Modifier", edit_recipe_path(@recipe) %> |
+  <% end %>
+  <% if can?(:destroy, @recipe) %>
+    <%= button_to "Supprimer", recipe_path(@recipe), method: :delete,
+      data: { turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette recette ?" } %>
+  <% end %>
+  <%= link_to "Retour", recipes_path, data: { turbo_frame: "_top" } %>
+</div>
