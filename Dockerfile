@@ -32,7 +32,7 @@ FROM base AS build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config && \
     apt-get install -y libyaml-dev && \
-    apt-get install nodejs npm && \
+    apt-get install -y nodejs npm && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install the correct version of bundle \

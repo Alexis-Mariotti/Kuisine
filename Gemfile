@@ -6,7 +6,7 @@ gem "mongoid"
 
 # we use shoelace
 gem 'webpacker'
-gem 'shoelace-rails'
+#gem 'shoelace-rails'
 
 # we use cancancan for authorization and role management
 gem 'cancancan'
