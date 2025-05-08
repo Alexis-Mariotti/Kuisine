@@ -35,21 +35,21 @@ RUN apt-get update -qq && \
     #rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 
-# Install NVM, Node.js via NVM, and yarn
-ENV NVM_DIR=/root/.nvm
-ENV NODE_VERSION=18.20.2
-
+# Install nvm and Node.js in a single RUN command
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && \
     . "$NVM_DIR/nvm.sh" && \
     nvm install $NODE_VERSION && \
-    nvm use $NODE_VERSION && \
     nvm alias default $NODE_VERSION && \
-    npm install -g yarn \
+    nvm use default && \
+    npm install -g yarn && \
+    echo "export NVM_DIR=$NVM_DIR" >> /root/.bashrc && \
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> /root/.bashrc && \
+    echo 'export PATH=$NVM_DIR/versions/node/v'"$NODE_VERSION"'/bin:$PATH' >> /root/.bashrc
 
-# Add Node and NPM to PATH
+# Set PATH manually for subsequent Dockerfile commands
 ENV PATH="$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH"
 
-# Optional: Confirm install
+# Optional: verify install
 RUN node -v && npm -v && yarn -v
 
 
