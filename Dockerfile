@@ -20,9 +20,9 @@ ENV RAILS_ENV="production" \
 # --- 3. Phase de build ---
 FROM base AS build
 
-# Installer foreman et bundler
+# Installer bundler
 RUN gem update --system && \
-    gem install --no-document bundler -v '~> 2.6' foreman
+    gem install --no-document bundler -v '~> 2.6'\
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
