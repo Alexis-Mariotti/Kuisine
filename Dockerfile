@@ -32,7 +32,7 @@ FROM base AS build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config && \
     apt-get install -y libyaml-dev && \
-#    apt-get install -y nodejs npm && \
+    apt-get install -y nodejs npm && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
@@ -65,8 +65,8 @@ run npm install --global yarn
 RUN yarn install
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
+#RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+#RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
 
 
 
