@@ -75,6 +75,7 @@ Rails.application.configure do
   #   /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
   #]
   config.hosts << "kuisine.duckdns.org:3000"
+  config.hosts << /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
