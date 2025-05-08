@@ -36,11 +36,11 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-RUN . ~/.nvm/nvm.sh && nvm install --lts
+RUN . ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
 #SHELL ["/bin/bash", "-c"]
 #RUN source ~/.bashrc
 #RUN nvm install --lts
-RUN nvm use --lts
+#RUN nvm use --lts
 
 # Install the correct version of bundle \
 RUN gem install --no-document bundler -v '~> 2.6' && \
