@@ -27,6 +27,7 @@ jobs:
         run: |
           sshpass ssh -tt ${{ secrets.USER }}@${{ secrets.HOST }} -i ~/.ssh/kuisine.key <<'ENDSSH'
           cd ${{ secrets.KUISINE_PATH }}
+          git restore .
           git pull
           sudo docker stop $(sudo docker ps -aq)
           sudo docker rm -vf $(sudo docker ps -aq)
