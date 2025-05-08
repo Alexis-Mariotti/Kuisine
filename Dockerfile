@@ -17,7 +17,6 @@ WORKDIR /rails
 # Install base packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 && \
-    apt-get install -y gnupg ca-certificates && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
@@ -32,29 +31,19 @@ FROM base AS build
 # Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config && \
-    apt-get install -y libyaml-dev #&&\
-    #rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install -y libyaml-dev && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+# Install Node.js 22 LTS and Yarn
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install --global yarn && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Add Node.js 18.x (LTS) from NodeSource
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs
-
-# Install Yarn (from Yarn's official repo)
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install -y yarn
-
-# Verify installations
-RUN node -v && npm -v && yarn -v
-
-
-# Install the correct version of bundle \
+# Install the correct version of bundle
 RUN gem install --no-document bundler -v '~> 2.6' && \
     gem update --system && \
     gem cleanup
-
-RUN gem install foreman --no-document
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -68,12 +57,12 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
+# Install JS dependencies
+RUN yarn install
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-#RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-#RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
-
-
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
 
 # Final stage for app image
 FROM base
