@@ -41,11 +41,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
 
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-#RUN . ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
-SHELL ["/bin/bash", "-c"]
-RUN source ~/.bashrc
-RUN nvm install --lts
-RUN nvm use --lts
+RUN . ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
+#SHELL ["/bin/bash", "-c"]
+#RUN source ~/.bashrc
+#RUN nvm install --lts
+#RUN nvm use --lts
 
 # Install the correct version of bundle \
 RUN gem install --no-document bundler -v '~> 2.6' && \
