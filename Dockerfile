@@ -32,8 +32,15 @@ FROM base AS build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config && \
     apt-get install -y libyaml-dev && \
-    apt-get install nodejs npm && \
+    apt-get install -y nodejs npm && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+RUN . ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
+#SHELL ["/bin/bash", "-c"]
+#RUN source ~/.bashrc
+#RUN nvm install --lts
+#RUN nvm use --lts
 
 # Install the correct version of bundle \
 RUN gem install --no-document bundler -v '~> 2.6' && \
@@ -58,8 +65,8 @@ run npm install --global yarn
 RUN yarn install
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
+#RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+#RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
 
 
 
