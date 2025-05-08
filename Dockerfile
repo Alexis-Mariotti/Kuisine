@@ -35,21 +35,16 @@ RUN apt-get update -qq && \
     #rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 
-# Install nvm and Node.js in a single RUN command
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && \
-    . "$NVM_DIR/nvm.sh" && \
-    nvm install $NODE_VERSION && \
-    nvm alias default $NODE_VERSION && \
-    nvm use default && \
-    npm install -g yarn && \
-    echo "export NVM_DIR=$NVM_DIR" >> /root/.bashrc && \
-    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> /root/.bashrc && \
-    echo 'export PATH=$NVM_DIR/versions/node/v'"$NODE_VERSION"'/bin:$PATH' >> /root/.bashrc
+# Add Node.js 18.x (LTS) from NodeSource
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs
 
-# Set PATH manually for subsequent Dockerfile commands
-ENV PATH="$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH"
+# Install Yarn (from Yarn's official repo)
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install -y yarn
 
-# Optional: verify install
+# Verify installations
 RUN node -v && npm -v && yarn -v
 
 
