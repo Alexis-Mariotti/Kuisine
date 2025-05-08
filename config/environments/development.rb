@@ -62,4 +62,8 @@ Rails.application.configure do
   config.hosts << /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
 
   #config.web_console.permissions << "10.0.0.0/8"
+
+  # sll connections
+  config.force_ssl = true
+
 end
