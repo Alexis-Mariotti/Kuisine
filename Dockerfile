@@ -31,9 +31,14 @@ FROM base AS build
 # Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config && \
-    apt-get install -y libyaml-dev && \
-    apt-get install -y nodejs npm && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install -y libyaml-dev #&&\
+    #rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g yarn && \
+
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 RUN . ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
@@ -61,7 +66,7 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-run npm install --global yarn
+#run npm install --global yarn
 RUN yarn install
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
