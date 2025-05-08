@@ -40,6 +40,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     npm install --global yarn && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+# install foreman
+RUN gem install --no-document foreman && \
+    gem cleanup
+
 # Install the correct version of bundle
 RUN gem install --no-document bundler -v '~> 2.6' && \
     gem update --system && \
