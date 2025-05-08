@@ -35,17 +35,23 @@ RUN apt-get update -qq && \
     #rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g yarn && \
+# Install NVM, Node.js via NVM, and yarn
+ENV NVM_DIR=/root/.nvm
+ENV NODE_VERSION=18.20.2
 
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && \
+    . "$NVM_DIR/nvm.sh" && \
+    nvm install $NODE_VERSION && \
+    nvm use $NODE_VERSION && \
+    nvm alias default $NODE_VERSION && \
+    npm install -g yarn \
 
-RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-RUN . ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
-#SHELL ["/bin/bash", "-c"]
-#RUN source ~/.bashrc
-#RUN nvm install --lts
-#RUN nvm use --lts
+# Add Node and NPM to PATH
+ENV PATH="$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH"
+
+# Optional: Confirm install
+RUN node -v && npm -v && yarn -v
+
 
 # Install the correct version of bundle \
 RUN gem install --no-document bundler -v '~> 2.6' && \
@@ -66,8 +72,6 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-#run npm install --global yarn
-RUN yarn install
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 #RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
