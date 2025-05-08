@@ -32,6 +32,7 @@ FROM base AS build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config && \
     apt-get install -y libyaml-dev && \
+    apt-get install nodejs npm && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install the correct version of bundle \
@@ -53,12 +54,7 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-# install yarn
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update -qq && \
-    apt-get install -y nodejs yarn
+run npm install --global yarn
 RUN yarn install
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
