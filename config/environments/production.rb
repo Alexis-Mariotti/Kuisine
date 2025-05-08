@@ -70,10 +70,11 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  config.hosts = [
-     "kuisine.duckdns.org:3000",     # Allow requests from example.com
-     /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
-  ]
+  #config.hosts = [
+  #   "kuisine.duckdns.org:3000",     # Allow requests from example.com
+  #   /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
+  #]
+  config.hosts << "kuisine.duckdns.org:3000"
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
