@@ -37,6 +37,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 
 # Précompile les assets sans secrets
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+RUN RAILS_ENV=production bundle exec rails webpacker:compile
 RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
 
 # --- 4. Image finale ---
