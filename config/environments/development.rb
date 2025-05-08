@@ -59,11 +59,13 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   config.hosts << "kuisine.duckdns.org:3000"
-  config.hosts << /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
+  config.hosts << /.*\.kuisine\.duckdns\.org:3000/
+
+  # with the ssl connection and load balancer
+  config.hosts << "kuisine.duckdns.org"
+  config.hosts << /.*\.kuisine\.duckdns\.org/
+  config.hosts << "kuisine.duckdns.org:443"
 
   #config.web_console.permissions << "10.0.0.0/8"
-
-  # sll connections
-  config.force_ssl = true
 
 end
