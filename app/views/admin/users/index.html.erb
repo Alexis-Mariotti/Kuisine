@@ -1,5 +1,8 @@
 <h2>Gestion des utilisateurs</h2>
 
+<%# handles messages to inform the admin about actions he makes %>
+<%= display_form_errors(@error_messages) %>
+<%= display_info_messages(@info_messages) %>
 <table>
   <thead>
   <tr>
@@ -14,7 +17,14 @@
       <td><%= user.email %></td>
       <td><%= user.username %></td>
       <td>
-        <%= button_to 'Supprimer', admin_user_path(user), method: :delete, data: { confirm: "Supprimer #{user.email} ?" } %>
+        <span class="actions">
+          <%# TODO : add edit_admin action %>
+          <%#= link_to 'Modifier', edit_admin_user_path(user) %>
+          <%= button_to 'Supprimer', admin_user_path(user), method: :delete, data: { confirm: "Supprimer #{user.email} ?" } %>
+          <%# send forgotten password email %>
+          <%= button_to 'Envoyer un email de réinitialisation', password_resets_path(email: user.email), method: :post, data: { confirm: "Envoyer un email de réinitialisation à #{user.email} ?" } %>
+        </span>
+
       </td>
     </tr>
   <% end %>

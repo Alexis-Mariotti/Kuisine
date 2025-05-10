@@ -152,6 +152,10 @@ class PasswordResetsController < ApplicationController
 
   # redirect home if the user is already logged in
   def redirect_if_logged_in
+    # ignore for admins
+    if can? :manage, :all
+      return
+    end
     if current_user
       respond_to do |format|
         format.turbo_stream { render partial: "shared/redirect", locals: { url: root_path }, notice: "Vous êtes déjà connecté." }
