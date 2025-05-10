@@ -1,0 +1,22 @@
+<h2>Gestion des utilisateurs</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Email</th>
+    <th>Nom d'utilisateur</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.username %></td>
+      <td>
+        <%= button_to 'Supprimer', admin_user_path(user), method: :delete, data: { confirm: "Supprimer #{user.email} ?" } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

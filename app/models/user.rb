@@ -30,17 +30,21 @@ class User
     Digest::SHA256.hexdigest(password_salt + submitted_password) == password_hash
   end
 
-  # Checks if the user is logged in
-  # @return [Boolean] True if the user is logged in, false otherwise
-  def is_logged_in?
-    !email.nil?
-  end
-
   # Checks if the user is an admin
   # @return [Boolean] True if the user is an admin, false otherwise
   def admin?
     # at this time the role is defined manually and it's work because we use nosql database
-    defined? role && role == "admin"
+    (defined? role) && role == "admin"
+  end
+
+  def destroy
+    # remove all the recipes and comments of the user
+    # recipes.destroy_all
+    # comments.destroy_all
+
+    # send a mail to the user email, to inform him that his account has been deleted
+    UserMailer.account_deleted(self).deliver_now
+    super
   end
 
   private

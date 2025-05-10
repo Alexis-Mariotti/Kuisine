@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.where(id: session[:user_id]).first if session[:user_id]
   end
 
+  # method to check if the user is identified or not
   def logged_in?
     current_user.present?
   end

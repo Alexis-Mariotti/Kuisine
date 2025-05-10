@@ -121,7 +121,7 @@ class RecipesController < ApplicationController
       @error_messages << "Veuillez donner un titre à la recette, ça serait dommage de ne pas nomer une telle merveille"
     end
 
-    puts params.inspect
+    #puts params.inspect
     if @recipe.ingredients.blank?
       @error_messages << "Aller, il faut bien des ingrédients pour faire une recette, non ?"
     end

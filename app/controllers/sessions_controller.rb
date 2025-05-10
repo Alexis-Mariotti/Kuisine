@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         format.html {redirect_to root_path, notice: "Connecté"}
       end
     else
-      puts "YYYYY"
+      # puts "YYYYY"
       # add the error message
       @error_messages << "Email ou mot de passe incorrect"
       # and display it

@@ -17,6 +17,10 @@ module ApplicationHelper
     current_user.present?
   end
 
+  def is_admin?
+    current_user&.admin?
+  end
+
   # redirect to login page if no user is logged
   # WARNING this method is used as a before_action in controllers
   # Displays a flash message
@@ -53,7 +57,23 @@ module ApplicationHelper
   end
 
   # link to user recipes list
+  # Only if user is logged
   def recipes_index_link
-    link_to "Mes recettes", recipes_path, class: "btn btn-primary"
+    link_to "Mes recettes", recipes_path, class: "btn btn-primary" if logged_in?
   end
+
+  # link to user profile page
+  # Only if user is logged
+  def profile_page_link
+    link_to "Mon profil", user_path(current_user), class: "btn btn-primary" if logged_in?
+  end
+
+  # link to user profile edition page
+  # Only if user is logged and admin
+  def admin_users_link
+    if logged_in? && current_user.admin?
+      link_to "Gestion des utilisateurs", admin_users_path, class: "btn btn-primary"
+    end
+  end
+
 end

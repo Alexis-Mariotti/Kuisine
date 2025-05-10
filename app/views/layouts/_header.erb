@@ -3,13 +3,8 @@
 
   <%= yield :header %>
 
-  <%# connexion section %>
-  <nav class="connexion">
-    <%= login_button %>
-    <%= register_button %>
-    <%= public_recipes_link %>
-    <%= recipes_index_link if logged_in? %>
-  </nav>
+  <%# nav bar %>
+  <%= render partial: 'shared/navbar' %>
 </header>
 
 <%= turbo_frame_tag :flash do %>

@@ -1,10 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @user %>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
-</div>
+<h2>Mon profil</h2>
+<p>Email : <%= @user.email %></p>
+<p>Nom d'utilisateur : <%= @user.username %></p>
+<%= link_to 'Modifier', edit_user_path(@user), data: { turbo_frame: '_top' } %>
+<%= button_to 'Supprimer mon compte', user_path(@user), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
