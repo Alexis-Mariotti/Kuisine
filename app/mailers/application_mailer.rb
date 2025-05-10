@@ -1,9 +1,13 @@
 class ApplicationMailer < ActionMailer::Base
   default from: "kusine@example.com"
   helper :application
-  # include route helper because the mailer is not in the same namespace as the routes
-  include Rails.application.routes.url_helpers
-  default_url_options[:host] = Rails.application.credentials.host || "localhost:3000"
-
   layout "mailer"
+
+  # set the default url options for the mailer
+  def default_url_options
+    # identify the correct host
+    { host: Rails.application.credentials.host || "localhost:3000",
+      # https protocol to avoid the port in urls
+      protocol: "https" }
+  end
 end
