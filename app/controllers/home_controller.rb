@@ -11,6 +11,9 @@ class HomeController < ApplicationController
     # get the 3 more viewed recipes of the week
     @trending_recipes = Recipe.trending(1.week.ago, Time.now, 3)
 
+    # get the 3 lasts public news
+    @recent_news = News.where(public: true).order(created_at: :desc).limit(3)
+
     render "home/index"
   end
 

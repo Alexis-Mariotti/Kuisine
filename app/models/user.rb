@@ -19,6 +19,7 @@ class User
   # Associations
   has_many :recipes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_and_belongs_to_many :distribution_lists
 
 
   attr_accessor :password, :password_confirmation
@@ -73,6 +74,38 @@ class User
   end
 
   # end of forgotten password methods
+
+  # handle the distribution lists suscriptions
+  def edit_distribution_list_subscription(distribution_list_name, is_subscribed)
+    # check if the distribution list exist
+    return unless DistributionList.where(name: distribution_list_name).exists?
+
+    # check if the user is already subscribed to the distribution list
+    if is_subscribed
+      # check if the user is already subscribed to the distribution list
+      return if distribution_lists.include?(DistributionList.find_by(name: distribution_list_name))
+      # subscribe the user to the distribution list
+      distribution_lists << DistributionList.find_by(name: distribution_list_name)
+    else
+      # check if the user is not subscribed to the distribution list
+      return unless distribution_lists.include?(DistributionList.find_by(name: distribution_list_name))
+      # unsubscribe the user from the distribution list
+      distribution_lists.delete(DistributionList.find_by(name: distribution_list_name))
+    end
+  end
+
+  # verify if the user is suscribing  to the distribution list
+  def subscribed_to_distribution_list?(distribution_list_name)
+    # check if the distribution list exist
+    return unless DistributionList.where(name: distribution_list_name).exists?
+    # check if the user is subscribed to the distribution list
+    distribution_lists.include?(DistributionList.find_by(name: distribution_list_name))
+  end
+
+  # check if the user is suscribing to the newsletter
+  def subscribed_to_newsletter?
+    subscribed_to_distribution_list?("user_newsletter")
+  end
 
   private
 

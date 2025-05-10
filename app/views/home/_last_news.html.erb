@@ -1,0 +1,12 @@
+<h2>Dernières actualités</h2>
+<% if latest_news.nil? || latest_news.empty? %>
+  <p>Aucune actualité à afficher.</p>
+<% else %>
+  <% latest_news.each do |news| %>
+    <div class="news-snippet">
+      <h3><%= link_to news.title, news_path(news) %></h3>
+      <p><%= truncate(news.content, length: 100) %></p>
+    </div>
+  <% end %>
+  <%= link_to "Voir toutes les actualités", news_index_path, class: "btn" %>
+<% end %>

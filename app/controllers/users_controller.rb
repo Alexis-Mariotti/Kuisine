@@ -13,6 +13,10 @@ class UsersController < ApplicationController
 
     # validate all confirmation
     if all_validation
+
+      # add the executions lists
+      @user.edit_distribution_list_subscription("user_newsletter",params[:suscribe_newsletter?])
+
       if @user.save
         session[:user_id] = @user.id.to_s
         redirect_to root_path, notice: "Inscription réussie"
@@ -58,6 +62,12 @@ class UsersController < ApplicationController
       return
     end
 
+    # update the executions lists
+    @user.edit_distribution_list_subscription("user_newsletter",params[:suscribe_newsletter?])
+    # delete the param
+    params.delete(:suscribe_newsletter?)
+
+
     # when all validations are ok, update the user
     if @user.update(user_params)
       redirect_to @user, notice: "Votre compte a été mis à jour avec succès."
@@ -89,7 +99,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :username)
+    params.require(:user).permit(:email, :password, :password_confirmation, :username, :suscribe_newsletter?)
   end
 
   # check if the password is valid for all the criteria

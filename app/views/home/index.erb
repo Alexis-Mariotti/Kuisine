@@ -3,6 +3,9 @@
 <%# render the trending recipes (3 most viewed of the week %>
 <%= render partial: 'trending_recipes', locals: { trending_recipes: @trending_recipes } %>
 
+<%# render the latest public news %>
+<%= render partial: 'last_news', locals: { latest_news: @recent_news } %>
+
 <%# loggin and register button %>
 <nav>
     <%= login_button %>

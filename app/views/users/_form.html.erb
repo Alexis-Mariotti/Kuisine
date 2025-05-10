@@ -24,6 +24,12 @@
     <%= form.password_field :password_confirmation %>
   </div>
 
+  <div class="field">
+    <%= label_tag :suscribe_newsletter?, "S'inscrire à la newsletter ?" %>
+    <%= check_box_tag :suscribe_newsletter?, '1', false %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit "Créer un compte", data: { turbo: false } %>
   </div>

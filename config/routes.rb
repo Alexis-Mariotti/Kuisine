@@ -52,4 +52,11 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :comments, only: [:create, :destroy]
   end
+
+  # routes for ne
+  resources :news, only: [:index, :show]
+  # routes for admin news
+  namespace :admin do
+    resources :news
+  end
 end

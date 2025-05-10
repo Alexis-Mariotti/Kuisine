@@ -1,0 +1,15 @@
+<h1>Actualités</h1>
+
+<% if @news.nil? || @news.empty? %>
+  <p>Aucune actualité à afficher.</p>
+<% else %>
+  <% @news.each do |news| %>
+    <div class="news-preview">
+      <h2><%= link_to news.title, news_path(news) %></h2>
+      <p><%= truncate(news.content, length: 150) %></p>
+      <%# display in small the "published at" %>
+      <p><small>Publié le <%= l(news.created_at, format: :long) %></small></p>
+    </div>
+    <hr>
+  <% end %>
+<% end %>

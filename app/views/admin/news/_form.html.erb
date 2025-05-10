@@ -1,0 +1,20 @@
+<%= form_with model: news, url: admin_news_index_path, local: true do |f| %>
+
+  <%= display_form_errors(@error_messages) %>
+  <%= display_info_messages(@info_messages) %>
+
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+  <%= f.label :public, "Rendre publique ?" %>
+  <%= f.check_box :public %>
+
+  <%= f.label :distribution_list_ids, "Listes de distribution" %><br>
+  <%= f.collection_check_boxes :distribution_list_ids, DistributionList.all, :id, :name %>
+
+  <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+<% end %>

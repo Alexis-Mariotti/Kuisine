@@ -68,12 +68,46 @@ module ApplicationHelper
     link_to "Mon profil", user_path(current_user), class: "btn btn-primary" if logged_in?
   end
 
-  # link to user profile edition page
+  # link to admin users page
   # Only if user is logged and admin
   def admin_users_link
     if logged_in? && current_user.admin?
       link_to "Gestion des utilisateurs", admin_users_path, class: "btn btn-primary"
     end
+  end
+
+  # link to the admin news page
+  # Only if user is logged and admin
+  def admin_news_link
+    if logged_in? && current_user.admin?
+      link_to "Gestion des news", admin_news_index_path, class: "btn btn-primary"
+    end
+  end
+
+  # link to the admin news creation page
+  # Only if user is logged and admin
+  def admin_news_new_link
+    if logged_in? && current_user.admin?
+      link_to "Créer une news", new_admin_news_path, class: "btn btn-primary"
+    end
+  end
+
+  # link to the admin news edition page
+  # Only if user is logged and admin
+  def admin_news_edit_link(news)
+    if logged_in? && current_user.admin?
+      link_to "Modifier", edit_admin_news_path(news), class: "btn btn-primary"
+    end
+  end
+
+  # show news link
+  def news_link(news)
+    link_to news.title, news_url(news), class: "btn btn-primary"
+  end
+
+  # news index link
+  def news_index_link
+    link_to "Actualitées", news_index_path, class: "btn btn-primary"
   end
 
   # link to forgot password page

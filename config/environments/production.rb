@@ -54,7 +54,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: 'kuisine.duckdns.org' }
+  config.action_mailer.default_url_options = { host: Rails.application.credentials.host }
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -88,13 +88,13 @@ Rails.application.configure do
   #   "kuisine.duckdns.org:3000",     # Allow requests from example.com
   #   /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
   #]
-  config.hosts << "kuisine.duckdns.org:3000"
-  config.hosts << /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
+  config.hosts << "#{Rails.application.credentials.host}:3000"
+  config.hosts << /.*\.kuisine\.duckdns\.org:3000/
 
   # with the ssl connection and load balancer
-  config.hosts << "kuisine.duckdns.org"
+  config.hosts << Rails.application.credentials.host
   config.hosts << /.*\.kuisine\.duckdns\.org/
-  config.hosts << "kuisine.duckdns.org:443"
+  config.hosts << "#{Rails.application.credentials.host}:443"
 
 
   #config.web_console.permissions << "10.0.0.0/8"

@@ -16,4 +16,13 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: @user.email, subject: "Réinitialisation de votre mot de passe")
   end
+
+  # mail sent to the user email to inform him/her about a new publication
+  def newsletter(news, user)
+    # define the instance variables to use them in the mailer view
+    @news = news
+    @user = user
+    mail to: user.email, subject: "Nouvelle publication : #{@news.title}"
+  end
+
 end
