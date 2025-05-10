@@ -5,9 +5,13 @@ class Ability
   def initialize(user)
     user ||= User.new # Invité (non connecté)
 
+    # decline all permissions by default
+    cannot :all, :all
+
     if user.admin?
       can :manage, :all
-    elsif user.is_logged_in?
+    #  verify if user exists in DB, so if is not a guest
+    elsif user.persisted?
       # permissions for logged in users
 
       # recipe permissions
@@ -30,18 +34,21 @@ class Ability
         ingredient.recipe.user_id == user.id
       end
       # user permissions
-      can [:update, :destroy, :read], User, id: user.id
+      can [:update, :destroy, :read, :show], User, id: user.id
 
-    else
-      # recipe permissions
-      can :read, Recipe, is_public: true
-      # comment permissions
-      can :read, Comment
-      # ingredient permissions
-      can :read, Ingredient
-      # user permissions
-      can [:read, :create], User
     end
+
+    # permissions for all users (including guests)
+
+    # recipe permissions
+    can [:read, :show], Recipe, is_public: true
+    can [:public, :create], Recipe
+    # comment permissions
+    can [:read, :show], Comment
+    # ingredient permissions
+    can [:read, :show], Ingredient
+    # user permissions
+    can [:read, :show, :create], User
   end
 
   # See the wiki for details:

@@ -2,31 +2,35 @@
 
   <%# handling error messages %>
   <%# errors messages are stored into an array of strings %>
-  <% if defined? @error_messages&.any? %>
-    <%= display_form_errors(@error_messages) %>
-  <% end %>
+  <%= display_form_errors(@error_messages) %>
 
-  <div>
+  <div class="field">
     <%= form.label :username, style: "display: block" %>
     <%= form.text_field :username %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :email, style: "display: block" %>
     <%= form.email_field :email %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :password, style: "display: block" %>
     <%= form.password_field :password %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :password_confirmation, style: "display: block" %>
     <%= form.password_field :password_confirmation %>
   </div>
 
-  <div>
+  <div class="field">
+    <%= label_tag :suscribe_newsletter?, "S'inscrire à la newsletter ?" %>
+    <%= check_box_tag :suscribe_newsletter?, '1', false %>
+  </div>
+
+
+  <div class="actions">
     <%= form.submit "Créer un compte", data: { turbo: false } %>
   </div>
 <% end %>

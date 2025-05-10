@@ -17,6 +17,10 @@ module ApplicationHelper
     current_user.present?
   end
 
+  def is_admin?
+    current_user&.admin?
+  end
+
   # redirect to login page if no user is logged
   # WARNING this method is used as a before_action in controllers
   # Displays a flash message
@@ -53,7 +57,90 @@ module ApplicationHelper
   end
 
   # link to user recipes list
+  # Only if user is logged
   def recipes_index_link
-    link_to "Mes recettes", recipes_path, class: "btn btn-primary"
+    link_to "Mes recettes", recipes_path, class: "btn btn-primary" if logged_in?
+  end
+
+  # link to user profile page
+  # Only if user is logged
+  def profile_page_link
+    link_to "Mon profil", user_path(current_user), class: "btn btn-primary" if logged_in?
+  end
+
+  # link to admin users page
+  # Only if user is logged and admin
+  def admin_users_link
+    if logged_in? && current_user.admin?
+      link_to "Gestion des utilisateurs", admin_users_path, class: "btn btn-primary"
+    end
+  end
+
+  # link to the admin news page
+  # Only if user is logged and admin
+  def admin_news_link
+    if logged_in? && current_user.admin?
+      link_to "Gestion des news", admin_news_index_path, class: "btn btn-primary"
+    end
+  end
+
+  # link to the admin news creation page
+  # Only if user is logged and admin
+  def admin_news_new_link
+    if logged_in? && current_user.admin?
+      link_to "Créer une news", new_admin_news_path, class: "btn btn-primary"
+    end
+  end
+
+  # link to the admin news edition page
+  # Only if user is logged and admin
+  def admin_news_edit_link(news)
+    if logged_in? && current_user.admin?
+      link_to "Modifier", edit_admin_news_path(news), class: "btn btn-primary"
+    end
+  end
+
+  # show news link
+  def news_link(news)
+    link_to news.title, news_url(news), class: "btn btn-primary"
+  end
+
+  # news index link
+  def news_index_link
+    link_to "Actualitées", news_index_path, class: "btn btn-primary"
+  end
+
+  # link to forgot password page
+  # Only if user is not logged
+  def forgot_password_link
+    link_to "Mot de passe oublié ?", new_password_reset_path,  class: "btn btn-primary"
+  end
+
+  # method to display error messages in a turbo frame
+  def display_form_errors(messages)
+    # add an empty turbo frame if there are no errors
+    if !(defined? messages) || messages.nil? || messages.empty?
+      return turbo_frame_tag "error_messages"
+    end
+    html_message = "<turbo-frame id=\"error_messages\"><ul>"
+    messages.each do |message|
+      html_message += "<li>#{message}</li>"
+    end
+    html_message += "</ul></turbo-frame>"
+    html_message.html_safe
+  end
+
+  # method to display info messages into a turbo frame
+  def display_info_messages(messages)
+    # add an empty turbo frame if there are no errors
+    if !(defined? messages) || messages.nil? || messages.empty?
+      return turbo_frame_tag "info_messages"
+    end
+    html_message = "<turbo-frame id=\"info_messages\"><ul>"
+    messages.each do |message|
+      html_message += "<li>#{message}</li>"
+    end
+    html_message += "</ul></turbo-frame>"
+    html_message.html_safe
   end
 end

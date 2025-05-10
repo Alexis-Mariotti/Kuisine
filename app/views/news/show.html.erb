@@ -1,0 +1,5 @@
+<h1><%= @news.title %></h1>
+<p><%= @news.content %></p>
+<p><small>Publié le <%= l(@news.created_at, format: :long) %></small></p>
+
+<%= link_to "Retour aux actualités", news_index_path %>

@@ -32,22 +32,22 @@ FROM base AS build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config && \
     apt-get install -y libyaml-dev && \
-    apt-get install -y nodejs npm && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-RUN . ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
-#SHELL ["/bin/bash", "-c"]
-#RUN source ~/.bashrc
-#RUN nvm install --lts
-#RUN nvm use --lts
+# Install Node.js 22 LTS and Yarn
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install --global yarn && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Install the correct version of bundle \
+# install foreman
+RUN gem install --no-document foreman && \
+    gem cleanup
+
+# Install the correct version of bundle
 RUN gem install --no-document bundler -v '~> 2.6' && \
     gem update --system && \
     gem cleanup
-
-RUN gem install foreman --no-document
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -61,14 +61,12 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-run npm install --global yarn
+# Install JS dependencies
 RUN yarn install
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-#RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-#RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
-
-
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE=1 ./bin/rails assets:clean
 
 # Final stage for app image
 FROM base

@@ -1,12 +1,7 @@
-<% content_for :title, "Editing user" %>
+<h1>Modifier mon profil</h1>
 
-<h1>Editing user</h1>
+<%= render partial: 'edit_form', locals: { user: @user } %>
+<%# puts @error_messages %>
+<hr>
 
-<%= render "form", user: @user %>
-
-<br>
-
-<div>
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
-</div>
+<%= button_to "Supprimer mon compte", user_path, method: :delete, data: { confirm: "Es-tu sûr ? Cette action est irréversible." }, class: "btn btn-danger mt-4" %>

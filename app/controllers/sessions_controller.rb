@@ -13,18 +13,19 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       # add the user to the session variable
       session[:user_id] = user.id.to_s
-
+      # redirect to the root path with a notice
       respond_to do |format|
+        # redirect with adapted turbo stream for turbo format
         format.turbo_stream { render partial: "shared/redirect", locals: { url: root_path }, notice: "Connecté" }
         format.html {redirect_to root_path, notice: "Connecté"}
       end
     else
-      puts "YYYYY"
+      # puts "YYYYY"
       # add the error message
       @error_messages << "Email ou mot de passe incorrect"
       # and display it
       respond_to do |format|
-        format.turbo_stream { render "shared/error_messages", locals: { error_messages: ["Email ou mot de passe incorrect"] } }
+        format.turbo_stream { render "shared/error_messages"}
         format.html do
           render :new
         end

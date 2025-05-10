@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -23,10 +22,21 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  # Routes for user authentication
+  # Routes for users
+  resources :users, only: [:show, :edit, :update, :destroy]
+  # admin management of users
+  namespace :admin do
+    resources :users, only: [:index, :destroy]
+  end
+  # Routes for password reset
+  resources :password_resets, only: [:new, :create, :edit, :update]
+
+
+  # Routes for account creation
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
 
+  # Routes for user authentication
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
@@ -41,5 +51,12 @@ Rails.application.routes.draw do
   # routes for comments
   resources :recipes do
     resources :comments, only: [:create, :destroy]
+  end
+
+  # routes for ne
+  resources :news, only: [:index, :show]
+  # routes for admin news
+  namespace :admin do
+    resources :news
   end
 end

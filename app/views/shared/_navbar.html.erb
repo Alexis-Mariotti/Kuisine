@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <%= login_button %>
+  <%= register_button %>
+  <%= public_recipes_link %>
+  <%= news_index_link %>
+  <% if logged_in? %>
+    <%= recipes_index_link  %>
+    <%=  profile_page_link %>
+  <% end %>
+  <% if is_admin? %>
+    <%= admin_users_link %>
+    <%= admin_news_link %>
+  <% end %>
+</nav>

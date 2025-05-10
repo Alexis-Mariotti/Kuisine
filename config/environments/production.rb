@@ -54,7 +54,21 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "example.com" }
+  config.action_mailer.default_url_options = { host: Rails.application.credentials.host }
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    user_name:            Rails.application.credentials.dig(:smtp, :username),
+    password:             Rails.application.credentials.dig(:smtp, :password),
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
+
+
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.smtp_settings = {
@@ -70,10 +84,20 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
-  # ]
+  #config.hosts = [
+  #   "kuisine.duckdns.org:3000",     # Allow requests from example.com
+  #   /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
+  #]
+  config.hosts << "#{Rails.application.credentials.host}:3000"
+  config.hosts << /.*\.kuisine\.duckdns\.org:3000/
+
+  # with the ssl connection and load balancer
+  config.hosts << Rails.application.credentials.host
+  config.hosts << /.*\.kuisine\.duckdns\.org/
+  config.hosts << "#{Rails.application.credentials.host}:443"
+
+
+  #config.web_console.permissions << "10.0.0.0/8"
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
