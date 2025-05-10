@@ -1,0 +1,14 @@
+<h1>Réinitialiser le mot de passe</h1>
+
+<%# method patch for update %>
+<%= form_with model: @user, url: password_reset_path(@user.reset_password_token), method: :patch do |f| %>
+  <%= display_form_errors(@error_messages) %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.submit "Réinitialiser le mot de passe" %>
+<% end %>

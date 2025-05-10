@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :destroy]
   end
+  # Routes for password reset
+  resources :password_resets, only: [:new, :create, :edit, :update]
+
 
   # Routes for account creation
   get 'signup', to: 'users#new'

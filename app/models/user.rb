@@ -9,6 +9,11 @@ class User
   field :password_hash, type: String
   field :username, type: String
 
+  # non obligatory fields
+  field :reset_password_token, type: String, default: nil
+  field :reset_password_sent_at, type: DateTime, default: nil
+  field :role, type: String, default: nil
+
   #todo: add avatars
 
   # Associations
@@ -46,6 +51,28 @@ class User
     UserMailer.account_deleted(self).deliver_now
     super
   end
+
+  # forgotten password methods
+
+  # Generates a password reset token and sets the sent time
+  def generate_password_reset_token!
+    # generate a random token for the reset password procedure
+    self.reset_password_token = SecureRandom.urlsafe_base64
+    # set the time of the token generation, for the expiration
+    self.reset_password_sent_at = Time.now
+    save!
+  end
+
+  # Checks if the password reset token is valid
+  def password_reset_expired?
+    # define the validity period for the token
+    reset_token_validity = 2.hours # TODO: move to config
+
+    # check if the token is expired
+    reset_password_sent_at < reset_token_validity.ago
+  end
+
+  # end of forgotten password methods
 
   private
 

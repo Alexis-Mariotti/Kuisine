@@ -10,4 +10,10 @@ class UserMailer < ApplicationMailer
     # set the mailer view to use it in the mailer
     mail(to: @user.email, subject: "Votre compte Kuisine a été supprimé !")
   end
+
+  # mail sent to the user email to give him/her the link to reset his/her password
+  def password_reset(user)
+    @user = user
+    mail(to: @user.email, subject: "Réinitialisation de votre mot de passe")
+  end
 end

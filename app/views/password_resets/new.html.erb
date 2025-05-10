@@ -1,0 +1,22 @@
+<h1>Mot de passe oublié</h1>
+
+<%= form_with url: password_resets_path, method: :post do |f| %>
+  <%= display_form_errors(@error_messages) %>
+  <%= display_info_messages(@info_messages) %>
+
+  <p>
+    Vous avez oublié votre mot de passe ? Pas de panique, il vous suffit d'entrer votre adresse e-mail ci-dessus et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+  </p>
+  <%= label_tag :email, "Votre e-mail" %>
+  <%= email_field_tag :email %>
+  <%= submit_tag "Envoyer les instructions" %>
+<% end %>
+
+<p>
+  Vous n'avez pas de compte ? Tans mieux, vous n'avez pas encore a portez le lourd poids de la mémoire (plus pour trés longtemps)
+  <%= register_button %>
+</p>
+<p>
+  Vous avez déjà un compte ? Et vous souvennez de votre mot de passe, youpi :) !
+  <%= login_button %>
+</p>

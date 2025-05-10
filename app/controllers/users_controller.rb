@@ -121,11 +121,6 @@ class UsersController < ApplicationController
       if password !~ /[!@#$%^&*()_+{}|:"<>?]/ # regex for special characters
         @error_messages << "Le mot de passe doit contenir au moins un caractère spécial"
       end
-      #puts "Username #{username}"
-      # username must be at least 3 characters long
-      if @user.username.nil? || (!@user.username.nil? && @user.username.length < 3)
-        @error_messages << "Le nom d'utilisateur doit faire au moins 3 caractères"
-      end
     end
 
     # if length changed, there is new errors

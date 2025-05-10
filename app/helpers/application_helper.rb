@@ -76,4 +76,37 @@ module ApplicationHelper
     end
   end
 
+  # link to forgot password page
+  # Only if user is not logged
+  def forgot_password_link
+    link_to "Mot de passe oublié ?", new_password_reset_path,  class: "btn btn-primary"
+  end
+
+  # method to display error messages in a turbo frame
+  def display_form_errors(messages)
+    # add an empty turbo frame if there are no errors
+    if !(defined? messages) || messages.nil? || messages.empty?
+      return turbo_frame_tag "error_messages"
+    end
+    html_message = "<turbo-frame id=\"error_messages\"><ul>"
+    messages.each do |message|
+      html_message += "<li>#{message}</li>"
+    end
+    html_message += "</ul></turbo-frame>"
+    html_message.html_safe
+  end
+
+  # method to display info messages into a turbo frame
+  def display_info_messages(messages)
+    # add an empty turbo frame if there are no errors
+    if !(defined? messages) || messages.nil? || messages.empty?
+      return turbo_frame_tag "info_messages"
+    end
+    html_message = "<turbo-frame id=\"info_messages\"><ul>"
+    messages.each do |message|
+      html_message += "<li>#{message}</li>"
+    end
+    html_message += "</ul></turbo-frame>"
+    html_message.html_safe
+  end
 end
