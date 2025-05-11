@@ -23,5 +23,4 @@ class IngredientsController < ApplicationController
 
     render json: results
   end
-
 end

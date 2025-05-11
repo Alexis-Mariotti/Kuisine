@@ -159,7 +159,7 @@ class PasswordResetsController < ApplicationController
     if current_user
       respond_to do |format|
         format.turbo_stream { render partial: "shared/redirect", locals: { url: root_path }, notice: "Vous êtes déjà connecté." }
-        format.html {redirect_to root_path, notice: "Vous êtes déjà connecté."}
+        format.html { redirect_to root_path, notice: "Vous êtes déjà connecté." }
       end
     end
   end

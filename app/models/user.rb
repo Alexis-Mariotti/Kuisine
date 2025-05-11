@@ -1,4 +1,4 @@
-require 'digest'
+require "digest"
 
 class User
   include Mongoid::Document
@@ -14,7 +14,7 @@ class User
   field :reset_password_sent_at, type: DateTime, default: nil
   field :role, type: String, default: nil
 
-  #todo: add avatars
+  # todo: add avatars
 
   # Associations
   has_many :recipes, dependent: :destroy
@@ -120,4 +120,3 @@ class User
     !password.nil?
   end
 end
-

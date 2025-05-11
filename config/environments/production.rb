@@ -60,11 +60,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              "smtp.gmail.com",
     port:                 587,
     user_name:            Rails.application.credentials.dig(:smtp, :username),
     password:             Rails.application.credentials.dig(:smtp, :password),
-    authentication:       'plain',
+    authentication:       "plain",
     enable_starttls_auto: true
   }
 
@@ -84,10 +84,10 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  #config.hosts = [
+  # config.hosts = [
   #   "kuisine.duckdns.org:3000",     # Allow requests from example.com
   #   /.*\.kuisine\.duckdns\.org:3000/ # Allow requests from subdomains like `www.example.com`
-  #]
+  # ]
   config.hosts << "#{Rails.application.credentials.host}:3000"
   config.hosts << /.*\.kuisine\.duckdns\.org:3000/
 
@@ -97,7 +97,7 @@ Rails.application.configure do
   config.hosts << "#{Rails.application.credentials.host}:443"
 
 
-  #config.web_console.permissions << "10.0.0.0/8"
+  # config.web_console.permissions << "10.0.0.0/8"
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }

@@ -1,11 +1,10 @@
 module RecipesHelper
-
   def display_form_errors(messages)
     # add an empty turbo frame if there are no errors
     if !(defined? messages) || messages.nil? || messages.empty?
       return turbo_frame_tag "error_messages"
     end
-    html_message = "<div class=\"error_messages\"><ul class=\"error_messages\">";
+    html_message = "<div class=\"error_messages\"><ul class=\"error_messages\">"
     messages.each do |message|
       html_message += "<li>#{message}</li>"
     end

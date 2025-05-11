@@ -5,15 +5,15 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  root 'home#index'
+  root "home#index"
 
-  get 'unauthorized', to: 'home#unauthorized'
+  get "unauthorized", to: "home#unauthorized"
 
   # for pwa
-  get '/service-worker.js' => 'service_worker#service_worker'
-  get '/manifest.json' => 'service_worker#manifest'
+  get "/service-worker.js" => "service_worker#service_worker"
+  get "/manifest.json" => "service_worker#manifest"
 
-  #post 'test_turbo', to: 'home#test_turbo'
+  # post 'test_turbo', to: 'home#test_turbo'
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
@@ -23,38 +23,38 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   # Routes for users
-  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :users, only: [ :show, :edit, :update, :destroy ]
   # admin management of users
   namespace :admin do
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [ :index, :destroy ]
   end
   # Routes for password reset
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :password_resets, only: [ :new, :create, :edit, :update ]
 
 
   # Routes for account creation
-  get 'signup', to: 'users#new'
-  post 'users', to: 'users#create'
+  get "signup", to: "users#new"
+  post "users", to: "users#create"
 
   # Routes for user authentication
-  get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
 
 
   # routes for recipes
   resources :recipes
-  get 'public/recipes', to: 'recipes#public', as: :public_recipes
+  get "public/recipes", to: "recipes#public", as: :public_recipes
   # routes for ingredients
   # ingredients search with spoonacular API
-  get 'ingredients/search', to: 'ingredients#search_spoonacular_ingredients'
+  get "ingredients/search", to: "ingredients#search_spoonacular_ingredients"
   # routes for comments
   resources :recipes do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [ :create, :destroy ]
   end
 
   # routes for ne
-  resources :news, only: [:index, :show]
+  resources :news, only: [ :index, :show ]
   # routes for admin news
   namespace :admin do
     resources :news

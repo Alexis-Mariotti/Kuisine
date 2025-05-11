@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ServiceWorkerController < ApplicationController
   protect_from_forgery except: :service_worker
 
@@ -6,7 +7,7 @@ class ServiceWorkerController < ApplicationController
   def manifest
     respond_to do |format|
       format.json do
-        render partial: 'pwa/manifest'
+        render partial: "pwa/manifest"
       end
     end
   end
@@ -15,11 +16,8 @@ class ServiceWorkerController < ApplicationController
   def service_worker
     respond_to do |format|
       format.js do
-        render partial: 'pwa/service-worker'
+        render partial: "pwa/service-worker"
       end
     end
   end
-
-
 end
-

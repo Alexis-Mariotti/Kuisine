@@ -68,7 +68,7 @@ class RecipesController < ApplicationController
         end
       else
         respond_to do |format|
-          format.turbo_stream { render turbo_stream: turbo_stream.replace(@recipe, partial: "form", locals: { recipe: @recipe}) }
+          format.turbo_stream { render turbo_stream: turbo_stream.replace(@recipe, partial: "form", locals: { recipe: @recipe }) }
         end
       end
     end
@@ -95,7 +95,7 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:title, :instructions, :id_public,
                                    # _destroy is used to delete an ingredient
-                                   ingredients_attributes: [:id, :name, :_destroy])
+                                   ingredients_attributes: [ :id, :name, :_destroy ])
   end
 
   def set_recipe
@@ -121,13 +121,13 @@ class RecipesController < ApplicationController
       @error_messages << "Veuillez donner un titre à la recette, ça serait dommage de ne pas nomer une telle merveille"
     end
 
-    #puts params.inspect
+    # puts params.inspect
     if @recipe.ingredients.blank?
       @error_messages << "Aller, il faut bien des ingrédients pour faire une recette, non ?"
     end
 
     if @recipe.instructions.blank?
-      @error_messages << "Bon, j'ai bien compris ce qu'on doit y mettre mais je ne sais pas comment aranger tout ça, il faut des instructions ! :)"''
+      @error_messages << "Bon, j'ai bien compris ce qu'on doit y mettre mais je ne sais pas comment aranger tout ça, il faut des instructions ! :)"""
     end
 
     if @error_messages.any?

@@ -45,8 +45,5 @@ class Recipe
     end
     # sort the recipes by the number of views and return it, truncating to max
     recipes.sort_by { |recipe| -recipe.views.count { |view| view >= start_time && view <= end_time } }.first(max)
-
   end
-
-
 end

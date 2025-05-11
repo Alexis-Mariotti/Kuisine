@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
-  authorize_resource class: 'User'
+  authorize_resource class: "User"
   # setting the user for actions where it's needed
   before_action :set_user, only: %i[destroy]
 

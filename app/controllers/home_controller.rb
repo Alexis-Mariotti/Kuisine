@@ -17,10 +17,9 @@ class HomeController < ApplicationController
     render "home/index"
   end
 
-  #def test_turbo
+  # def test_turbo
   #  name = params[:name]
   #  # we set the locals to pass the name to the partial
   #  render partial: "home/test_turbo", locals: { name: name }
-  #end
-
+  # end
 end
