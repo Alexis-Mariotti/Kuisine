@@ -20,7 +20,7 @@ header h1 {
 }
 
 
-header h1 img {
+header img {
     padding: 0;
     margin: 0;
     max-width: 100%;
@@ -144,6 +144,13 @@ a:hover {
 
 @media (max-width: 768px) {
 
+    header {
+        max-height: 35vh;
+    }
+
+    header img{
+        max-height: 15vh;
+    }
     nav {
         padding: 5px 10px;
     }
