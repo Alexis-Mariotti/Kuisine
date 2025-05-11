@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def body_class(class_name)
     content_for :body_class, class_name
   end
@@ -46,7 +45,7 @@ module ApplicationHelper
 
   # method to display flash messages with shoelace
   def show_alert(type:, message:, icon:)
-    tag.sl_alert(type:, open: true, closable: true, duration: '1500') do
+    tag.sl_alert(type:, open: true, closable: true, duration: "1500") do
       "#{tag.sl_icon(nil, slot: 'icon', name: icon)}#{message}".html_safe
     end
   end

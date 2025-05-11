@@ -2,7 +2,6 @@
 
 # This controller handles the news articles
 class NewsController < ApplicationController
-
   # page to display all the visible news by the user
   def index
     # init the @news array with all the news that are accessible by the user

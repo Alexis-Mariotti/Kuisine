@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   # login form
   def new
     @error_messages = []
@@ -17,7 +16,7 @@ class SessionsController < ApplicationController
       respond_to do |format|
         # redirect with adapted turbo stream for turbo format
         format.turbo_stream { render partial: "shared/redirect", locals: { url: root_path }, notice: "Connecté" }
-        format.html {redirect_to root_path, notice: "Connecté"}
+        format.html { redirect_to root_path, notice: "Connecté" }
       end
     else
       # puts "YYYYY"
@@ -25,7 +24,7 @@ class SessionsController < ApplicationController
       @error_messages << "Email ou mot de passe incorrect"
       # and display it
       respond_to do |format|
-        format.turbo_stream { render "shared/error_messages"}
+        format.turbo_stream { render "shared/error_messages" }
         format.html do
           render :new
         end

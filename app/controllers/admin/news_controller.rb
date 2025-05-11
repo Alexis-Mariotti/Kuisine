@@ -1,6 +1,6 @@
 class Admin::NewsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_news, only: [:edit, :update, :destroy]
+  before_action :set_news, only: [ :edit, :update, :destroy ]
 
   def new
     @news = News.new
@@ -73,7 +73,7 @@ class Admin::NewsController < ApplicationController
     respond_to do |format|
       # redirect with adapted turbo stream for turbo format
       format.turbo_stream { render partial: "shared/redirect", locals: { url: admin_news_index_path }, notice: "News supprimée." }
-      format.html {redirect_to admin_news_index_path, notice: "News supprimée."}
+      format.html { redirect_to admin_news_index_path, notice: "News supprimée." }
     end
   end
 
@@ -100,7 +100,6 @@ class Admin::NewsController < ApplicationController
 
   # method to verify if the form is correctly filled
   def news_validation
-
     # use directly the params to avoid errors with editing
     title = params[:news][:title]
     content = params[:news][:content]
@@ -129,7 +128,7 @@ class Admin::NewsController < ApplicationController
     if @error_messages.any?
       respond_to do |format|
         format.turbo_stream { render "shared/error_messages" }
-        format.html {render context_page}
+        format.html { render context_page }
       end
       # if there are errors, render the form with error error_messages and return false
       return false
@@ -137,5 +136,4 @@ class Admin::NewsController < ApplicationController
     # if no errors, return true
     true
   end
-
 end

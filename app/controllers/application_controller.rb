@@ -24,9 +24,8 @@ class ApplicationController < ActionController::Base
 
   def unauthorized
     respond_to do |format|
-      format.turbo_stream { render partial: "shared/redirect", locals: { url: root_path }}
+      format.turbo_stream { render partial: "shared/redirect", locals: { url: root_path } }
       format.html { render "unauthorized" }
     end
   end
-
 end

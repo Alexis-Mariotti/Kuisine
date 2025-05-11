@@ -5,11 +5,11 @@ source "https://rubygems.org"
 gem "mongoid"
 
 # we use shoelace
-gem 'webpacker'
-#gem 'shoelace-rails'
+gem "webpacker"
+# gem 'shoelace-rails'
 
 # we use cancancan for authorization and role management
-gem 'cancancan'
+gem "cancancan"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"

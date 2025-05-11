@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if all_validation
 
       # add the executions lists
-      @user.edit_distribution_list_subscription("user_newsletter",params[:suscribe_newsletter?])
+      @user.edit_distribution_list_subscription("user_newsletter", params[:suscribe_newsletter?])
 
       if @user.save
         session[:user_id] = @user.id.to_s
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     end
 
     # update the executions lists
-    @user.edit_distribution_list_subscription("user_newsletter",params[:suscribe_newsletter?])
+    @user.edit_distribution_list_subscription("user_newsletter", params[:suscribe_newsletter?])
     # delete the param
     params.delete(:suscribe_newsletter?)
 
@@ -145,7 +145,7 @@ class UsersController < ApplicationController
   # check if the email already exists
   # @param actual_email [String] the actual email of the user, used for update action (to ignore the email already used by the user himself)
   # @return [Boolean] true if the email already exists, false otherwise
-  def general_validation( actual_email = nil)
+  def general_validation(actual_email = nil)
     set_error_messages
 
     # keep the original length of the error messages array to detect if there are new errors
@@ -205,7 +205,6 @@ class UsersController < ApplicationController
 
     # render the error messages given by the previous validation
     render_error_messages(context_page)
-
   end
 
   # set the error messages array if not already defined

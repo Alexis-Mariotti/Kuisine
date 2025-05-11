@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
 
-  before_action :require_login, only: [:create, :destroy]
+  before_action :require_login, only: [ :create, :destroy ]
   before_action :set_recipe
-  before_action :set_comment, only: [:destroy]
-  before_action :set_user, except: [:create]
-  before_action :authorize_destroy!, only: [:destroy]
+  before_action :set_comment, only: [ :destroy ]
+  before_action :set_user, except: [ :create ]
+  before_action :authorize_destroy!, only: [ :destroy ]
 
   def create
     # the comment is written by the current user

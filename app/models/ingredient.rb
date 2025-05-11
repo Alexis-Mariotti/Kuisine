@@ -6,5 +6,4 @@ class Ingredient
 
   # a recipe can have many ingredients
   embedded_in :recipe
-
 end

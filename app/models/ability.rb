@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Ability
   include CanCan::Ability
 
@@ -16,39 +17,39 @@ class Ability
 
       # recipe permissions
       can :create, Recipe
-      can [:update, :destroy], Recipe, user_id: user.id
+      can [ :update, :destroy ], Recipe, user_id: user.id
       # comment permissions
       can :create, Comment
-      can [:update, :destroy], Comment do |comment|
+      can [ :update, :destroy ], Comment do |comment|
         # user can only update or destroy his own comments
         comment.user_id == user.id
       end
       # can destroy comment on his own recipe
-      can [:destroy], Comment do |comment|
+      can [ :destroy ], Comment do |comment|
         comment.recipe.user_id == user.id
       end
       # ingredient permissions
       can :create, Ingredient
-      can [:update, :destroy], Ingredient do |ingredient|
+      can [ :update, :destroy ], Ingredient do |ingredient|
         # user can only update or destroy his own ingredients
         ingredient.recipe.user_id == user.id
       end
       # user permissions
-      can [:update, :destroy, :read, :show], User, id: user.id
+      can [ :update, :destroy, :read, :show ], User, id: user.id
 
     end
 
     # permissions for all users (including guests)
 
     # recipe permissions
-    can [:read, :show], Recipe, is_public: true
-    can [:public, :create], Recipe
+    can [ :read, :show ], Recipe, is_public: true
+    can [ :public, :create ], Recipe
     # comment permissions
-    can [:read, :show], Comment
+    can [ :read, :show ], Comment
     # ingredient permissions
-    can [:read, :show], Ingredient
+    can [ :read, :show ], Ingredient
     # user permissions
-    can [:read, :show, :create], User
+    can [ :read, :show, :create ], User
   end
 
   # See the wiki for details:
