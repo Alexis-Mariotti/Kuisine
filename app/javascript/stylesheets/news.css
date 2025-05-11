@@ -5,6 +5,7 @@
     list-style: none;
 
     display: flex;
+    flex-direction: column;
     gap: 1em;
     flex-wrap: wrap;
 }
@@ -12,6 +13,8 @@
 .news-card {
     /* remove the default li style */
     list-style: none;
+
+    width: 70vw;
 
     display: flex;
     flex-direction: column;
