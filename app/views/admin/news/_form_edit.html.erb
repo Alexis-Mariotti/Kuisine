@@ -3,15 +3,18 @@
   <%= display_form_errors(@error_messages) %>
   <%= display_info_messages(@info_messages) %>
 
-
+<div class="field">
   <%= f.label :title %>
   <%= f.text_field :title %>
-
+</div>
+  <div class="field">
   <%= f.label :content %>
   <%= f.text_area :content %>
-
+  </div>
+  <div class="field checkbox">
   <%= f.label :public, "Rendre publique ?" %>
   <%= f.check_box :public %>
+  </div>
 
   <%#= f.label :distribution_list_ids, "Listes de distribution" %><br>
   <%#= f.collection_check_boxes :distribution_list_ids, DistributionList.all, :id, :name %>
