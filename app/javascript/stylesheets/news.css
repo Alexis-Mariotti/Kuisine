@@ -1,0 +1,61 @@
+@import "color.css";
+
+.news-cards {
+    /* remove the default ul style */
+    list-style: none;
+
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.news-card {
+    /* remove the default li style */
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--color-green-light);
+    padding: 1em;
+    border-radius: 4px;
+    flex: 1 1 calc(33% - 1em);
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--color-gray);
+    margin: 1em 0;
+}
+
+
+.news-previews {
+    /* remove the default ul style */
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: start;
+    margin: 1rem;
+}
+
+.news-preview{
+    /* remove the default li style */
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.news-preview h2 {
+    margin: 0;
+    color: var(--color-dark-gray);
+}
+
+.news-preview p {
+    margin: 0;
+    color: var(--color-dark-gray);
+}
+

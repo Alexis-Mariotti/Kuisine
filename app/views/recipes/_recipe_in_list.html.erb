@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(recipe) do %>
-  <li>
+  <li class="recipe-li">
     <strong><%= link_to recipe.title, recipe_path(recipe), data: { turbo_frame: "_top" } %></strong>
     |
      <% if recipe.is_public %>

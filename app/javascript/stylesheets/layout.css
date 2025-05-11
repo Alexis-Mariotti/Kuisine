@@ -1,0 +1,153 @@
+@import "color.css";
+
+header {
+    background-color: var(--color-green-light);
+    color: var(--color-white);
+    max-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+}
+header h1 {
+    margin: 0;
+    padding: 0;
+    max-height: 10vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+
+header h1 img {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    max-height: 10vh;
+    object-fit: contain;
+    display: block;
+}
+
+nav {
+    color: var(--color-white);
+    padding: 1vh 2vw;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+nav a {
+    margin: 0.25vh 0.25vw;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-light-gray);
+    color: var(--color-dark-gray);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 2vh 2vw;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-dark-gray);
+}
+h1 {
+    margin: 3vh 0 1vh 2vw;
+}
+h2 {
+    margin: 2vh 0 1vh 2vw;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.header {
+    background-color: var(--color-green);
+    color: var(--color-white);
+    padding: 1em;
+}
+
+a {
+    color: var(--color-accent-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.section {
+    background-color: var(--color-light-gray);
+    padding: 2em;
+    border-radius: 8px;
+}
+
+.unauthorized-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5vh 0.5vw;
+}
+
+.error_messages{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1vh 0.5vw;
+    border-radius: 8px;
+}
+
+.error_messages li{
+    list-style: none;
+    color: var(--color-accent-red);
+    padding: 0.5em;
+    border-radius: 8px;
+}
+
+.info_messages {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1vh 0.5vw;
+    box-shadow: 0 0 0 1px rgba(155, 205, 106, 0.5); /* Green shadow */
+    border-radius: 8px;
+}
+
+.info_messages li{
+    list-style: none;
+    color: var(--color-green-dark);
+}
+
+
+
+@media (max-width: 768px) {
+
+    nav {
+        padding: 5px 10px;
+    }
+    nav a {
+        margin: 3px 2px;
+    }
+}

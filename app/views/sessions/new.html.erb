@@ -7,17 +7,23 @@
     <%= display_form_errors(@error_messages) %>
   <% end %>
 
-  <%= label_tag :email %><br>
-  <%= text_field_tag :email %><br>
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+  </div>
 
-  <%= label_tag :password %><br>
-  <%= password_field_tag :password %><br>
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
 
-  <%= submit_tag "Se connecter" %>
+  <div class="actions">
+    <%= submit_tag "Se connecter" %>
+  </div>
 <% end %>
 
 <%# Forgotten password and register link %>
-<div>
-<%= forgot_password_link %>
-<%= register_button %>
+<div class="links">
+  <%= forgot_password_link("Mot de passe oublié ?",class_name="btn btn-secondary") %>
+  <%= register_button("Inscription", class_name="btn btn-secondary") %>
 </div>

@@ -1,7 +1,7 @@
 <div data-ingredient-search-target="ingredient" class="ingredient-field">
   <%#= ingredient_form.label :name, "Ingrédient" %>
   <%= ingredient_form.text_field :name %>
-  <button type="button" data-action="click->ingredient-search#removeField">Supprimer</button>
+  <button type="button" class="btn btn-secondary" data-action="click->ingredient-search#removeField">Supprimer</button>
 
   <%# hidden field for manage ingredient deletion in recipe update %>
   <%= ingredient_form.hidden_field :_destroy, value: false %>

@@ -6,15 +6,17 @@
     <%= display_form_errors(@error_messages) %>
   <% end %>
 
-  <div>
+  <div class="field">
   <%= f.label :title %>
   <%= f.text_field :title %>
   </div>
 
   <div data-controller="ingredient-search">
-    <%= label_tag :ingredient_search, "Rechercher un ingrédient :" %>
-    <%= text_field_tag :ingredient_search, "", placeholder: "ex : tomato", data: { action: "input->ingredient-search#search", ingredient_search_target: "input" } %>
-    <ul data-ingredient-search-target="results"></ul>
+    <div class="field search">
+      <%= label_tag :ingredient_search, "Rechercher un ingrédient :" %>
+      <%= text_field_tag :ingredient_search, "", placeholder: "ex : tomato", data: { action: "input->ingredient-search#search", ingredient_search_target: "input" } %>
+    </div>
+    <ul class="ingredient-ul" data-ingredient-search-target="results"></ul>
 
     <div id="ingredient-fields" data-ingredient-search-target="container">
       <%= f.fields_for :ingredients do |ingredient_form| %>

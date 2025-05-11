@@ -1,0 +1,46 @@
+/* font used in the app */
+
+:root {
+    --font-family: 'Arial', sans-serif;
+    --font-size: 16px;
+    --font-size-medium: 18px;
+    --font-size-large: 20px;
+    --line-height: 1.5;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+}
+
+p {
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+    font-size: var(--font-size);
+}
+
+/* typography styles */
+h1 {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+}
+
+h2 {
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+}
+
+h3 {
+    font-size: var(--font-size);
+    font-weight: bold;
+}
+
+label{
+    font-size: var(--font-size);
+    font-weight: lighter;
+}

@@ -5,7 +5,7 @@ module RecipesHelper
     if !(defined? messages) || messages.nil? || messages.empty?
       return turbo_frame_tag "error_messages"
     end
-    html_message = "<div class=\"error_messages\"><ul>";
+    html_message = "<div class=\"error_messages\"><ul class=\"error_messages\">";
     messages.each do |message|
       html_message += "<li>#{message}</li>"
     end

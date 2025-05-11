@@ -1,1 +1,20 @@
 /*@import '~@shoelace-style/shoelace/dist/shoelace/shoelace';*/
+
+@import "button";
+@import "color";
+@import "news";
+@import "recipe";
+@import "ingredient";
+@import "layout";
+@import "form";
+@import "home";
+@import "typo";
+
+.unauthorized-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+}

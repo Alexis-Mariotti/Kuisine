@@ -1,0 +1,6 @@
+@import "color.css";
+
+.latest-news {
+    background-color: var(--color-white);
+    padding: 2em;
+}

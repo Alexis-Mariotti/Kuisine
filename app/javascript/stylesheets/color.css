@@ -1,0 +1,21 @@
+
+/* the color palete of the site */
+
+/* color palete of the Kuisine web site */
+:root {
+    --color-green: #9ccd6a;
+    --color-orange: #d47f1e;
+    --color-green-light: #cfe9af;
+    --color-orange-light: #f4b879;
+    --color-green-dark: #6e9b47;
+    --color-orange-dark: #a15612;
+
+    --color-white: #ffffff;
+    --color-light-gray: #f5f5f5;
+    --color-gray: #cccccc;
+    --color-dark-gray: #333333;
+    --color-black: #000000;
+
+    --color-accent-red: #ef4444;
+    --color-accent-blue: #3b82f6;
+}
