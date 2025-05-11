@@ -14,11 +14,15 @@
   <%= submit_tag "Envoyer les instructions" %>
 <% end %>
 
-<p>
-  Vous n'avez pas de compte ? Tans mieux, vous n'avez pas encore a portez le lourd poids de la mémoire (plus pour trés longtemps)
-  <%= register_button %>
-</p>
-<p>
-  Vous avez déjà un compte ? Et vous souvennez de votre mot de passe, youpi :) !
-  <%= login_button %>
-</p>
+<section class="password-reset other-links">
+
+  <span>
+    <p>Vous n'avez pas de compte ? Tans mieux, vous n'avez pas encore a portez le lourd poids de la mémoire (plus pour trés longtemps)</p>
+    <%= register_button %>
+  </span>
+
+  <span>
+    <p>Vous avez déjà un compte ? Et vous souvennez de votre mot de passe, youpi :) !</p>
+    <%= login_button %>
+  </span>
+</section>

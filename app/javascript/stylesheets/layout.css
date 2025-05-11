@@ -1,5 +1,10 @@
 @import "color.css";
 
+
+html{
+    word-wrap: break-word;
+}
+
 header {
     background-color: var(--color-green-light);
     color: var(--color-white);

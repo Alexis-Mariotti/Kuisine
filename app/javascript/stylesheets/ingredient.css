@@ -1,4 +1,5 @@
 @import "color.css";
+@import "typo.css";
 
 
 .ingredient-ul{
@@ -36,3 +37,24 @@
     gap: 1em;
     margin: 1rem;
 }
+
+.ingredients{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 3vh;
+    padding: 0 2vw 0 2vw;
+}
+
+.ingredients li{
+    margin-left: 2vw;
+
+    width: fit-content;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    background-color: var(--color-green-light);
+
+    font-size: var(--font-size-small);
+}
+

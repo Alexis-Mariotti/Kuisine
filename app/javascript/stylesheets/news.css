@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
 
-    background-color: var(--color-green-light);
+    background-color: var(--color-orange-lighter);
     padding: 1em;
     border-radius: 4px;
     flex: 1 1 calc(33% - 1em);
@@ -51,6 +51,12 @@ hr {
     display: flex;
     flex-direction: column;
     gap: 1em;
+
+    width: 80vw;
+
+    background-color: var(--color-orange-lighter);
+    padding: 0.5em 0.7em;
+    border-radius: 4px;
 }
 
 .news-preview h2 {

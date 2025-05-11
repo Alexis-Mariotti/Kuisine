@@ -1,7 +1,7 @@
 .btn {
     display: inline-block;
     padding: 0.6em 1.2em;
-    font-size: 1rem;
+    font-size: var(--font-size-small);
     font-weight: 500;
     border-radius: 0.375rem;
     border: none;
@@ -9,6 +9,8 @@
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.2s ease, color 0.2s ease;
+
+    width: fit-content;
 }
 
 .btn:focus {
@@ -59,6 +61,26 @@
 
 .btn-light:focus {
     box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5); /* White shadow */
+}
+
+.btn-danger {
+    background-color: var(--color-accent-red);
+    color: var(--color-white);
+}
+
+.btn-danger:hover {
+    background-color: var(--color-accent-red-dark);
+}
+
+.btn-danger:focus {
+    box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.5); /* Red shadow */
+}
+
+.actions-buttons{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
 }
 
 

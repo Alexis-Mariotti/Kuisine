@@ -2,6 +2,9 @@
 
 :root {
     --font-family: 'Arial', sans-serif;
+    --font-size-minus: 10px;
+    --font-size-xsmall: 12px;
+    --font-size-small: 14px;
     --font-size: 16px;
     --font-size-medium: 18px;
     --font-size-large: 20px;

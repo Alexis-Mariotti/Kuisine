@@ -16,10 +16,10 @@ module RecipesHelper
   def visibility_section(recipe)
     content_tag(:section, class: "visibility") do
       if recipe.is_public
-        content_tag(:span, "Publique", class: "visibility_label") +
-          content_tag(:span, "#{recipe.total_views} vues", class: "views_count")
+        content_tag(:span, "Publique", class: "visibility-label") +
+          content_tag(:span, "#{recipe.total_views} vues", class: "views-count")
       else
-        content_tag(:span, "Privée", class: "visibility_label")
+        content_tag(:span, "Privée", class: "visibility-label")
       end
     end
   end
