@@ -7,16 +7,22 @@
   <p>
     Vous avez oublié votre mot de passe ? Pas de panique, il vous suffit d'entrer votre adresse e-mail ci-dessus et nous vous enverrons un lien pour réinitialiser votre mot de passe.
   </p>
-  <%= label_tag :email, "Votre e-mail" %>
-  <%= email_field_tag :email %>
+  <div class="field">
+    <%= label_tag :email, "Votre e-mail" %>
+    <%= email_field_tag :email %>
+  </div>
   <%= submit_tag "Envoyer les instructions" %>
 <% end %>
 
-<p>
-  Vous n'avez pas de compte ? Tans mieux, vous n'avez pas encore a portez le lourd poids de la mémoire (plus pour trés longtemps)
-  <%= register_button %>
-</p>
-<p>
-  Vous avez déjà un compte ? Et vous souvennez de votre mot de passe, youpi :) !
-  <%= login_button %>
-</p>
+<section class="password-reset other-links">
+
+  <span>
+    <p>Vous n'avez pas de compte ? Tans mieux, vous n'avez pas encore a portez le lourd poids de la mémoire (plus pour trés longtemps)</p>
+    <%= register_button %>
+  </span>
+
+  <span>
+    <p>Vous avez déjà un compte ? Et vous souvennez de votre mot de passe, youpi :) !</p>
+    <%= login_button %>
+  </span>
+</section>

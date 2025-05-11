@@ -3,7 +3,10 @@
 import "@hotwired/turbo-rails"
 import "controllers/index"
 
-import '../../assets/stylesheets/application.scss';
+// import the application stylesheet
+import "stylesheets/application.scss"
+
+
 /**
 import { setBasePath, SlAlert } from '@shoelace-style/shoelace'
 const rootUrl = document.currentScript.src.replace(/\/packs.*$/, '')

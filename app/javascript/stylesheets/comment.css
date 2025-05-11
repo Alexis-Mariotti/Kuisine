@@ -1,0 +1,61 @@
+@import "color.css";
+@import "typo.css";
+
+.comments_section{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.2em;
+
+    width: 80vw;
+
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background-color: var(--color-orange-lighter);
+    border-radius: 4px;
+}
+
+.comment .content{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.2em;
+}
+
+.comment .actions-buttons{
+    width: fit-content;
+}
+
+.comment .content .user{
+    color: var(--color-dark-gray);
+    font-weight: bold;
+    font-size: var(--font-size);
+}
+
+.comment .content .text{
+    color: var(--color-dark-gray);
+    font-size: var(--font-size-small);
+}
+
+.actions-buttons form{
+    width: fit-content;
+}
+
+.comments_section textarea{
+    height: 15vh;
+    font-size: var(--font-size);
+}
+
+@media (max-width: 768px) {
+    .comments_section textarea{
+        font-size: var(--font-size-medium);
+    }
+}

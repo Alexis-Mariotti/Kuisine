@@ -1,0 +1,23 @@
+@import "color.css";
+
+.trending-recipes-section{
+    margin: 0 0 0 1vw;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#trending-recipes{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.latest-news {
+    margin: 0 0 0 1vw;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}

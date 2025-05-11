@@ -1,0 +1,50 @@
+@import "color.css";
+
+.password-reset .other-links{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 3vw;
+    margin-right: 3vw;
+
+    width: 75vw;
+}
+
+.password-reset.other-links span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2vw;
+
+    width: 100%;
+    object-fit: contain;
+}
+
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.25rem;
+
+    margin: 0.5rem;
+    padding: 0.2rem 1.5rem 1.5rem;
+
+    width: 80vw;
+}
+
+.user-profile > *{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    width: fit-content;
+}
+
+.user-profile > * p{
+    height: fit-content;
+    margin: 0;
+}

@@ -4,8 +4,8 @@
 <section class="recipe_content">
   <%# ingredients section %>
   <section class="ingredient_section">
-    <h2>Ingrédients : </h2>
-    <ul class="ingredients_list">
+    <h2>Ingrédients </h2>
+    <ul class="ingredients">
       <% @recipe.ingredients.each do |ingredient| %>
         <li>
           <%= render partial: "ingredients/ingredient", locals: { ingredient: ingredient } %>
@@ -13,15 +13,15 @@
       <% end %>
     </ul>
   </section>
-  <p><strong>Instructions :</strong><%= simple_format(@recipe.instructions) %></p>
+  <p><strong>Instructions</strong><%= simple_format(@recipe.instructions) %></p>
 </section>
 <div class="actions-buttons" style="display: flex">
   <% if can?(:edit, @recipe) %>
-    <%= link_to "Modifier", edit_recipe_path(@recipe) %> |
+    <%= link_to "Modifier", edit_recipe_path(@recipe), class: "btn btn-primary" %>
   <% end %>
   <% if can?(:destroy, @recipe) %>
     <%= button_to "Supprimer", recipe_path(@recipe), method: :delete,
-      data: { turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette recette ?" } %>
+      data: { turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette recette ?" }, class: "btn btn-danger" %>
   <% end %>
-  <%= link_to "Retour", recipes_path, data: { turbo_frame: "_top" } %>
+  <%= link_to "Retour", recipes_path, data: { turbo_frame: "_top" }, class: "btn btn-primary" %>
 </div>

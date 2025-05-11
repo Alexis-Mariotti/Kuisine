@@ -3,7 +3,7 @@
 <%= link_to "Nouvelle recette", new_recipe_path %>
 
 <%= turbo_frame_tag "recipes" do %>
-  <ul>
+  <ul class="recipe-ul">
     <% @recipes.each do |recipe| %>
       <%= render "recipe_in_list", recipe: recipe %>
     <% end %>

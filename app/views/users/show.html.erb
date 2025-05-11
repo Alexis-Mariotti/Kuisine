@@ -1,5 +1,15 @@
 <h2>Mon profil</h2>
-<p>Email : <%= @user.email %></p>
-<p>Nom d'utilisateur : <%= @user.username %></p>
-<%= link_to 'Modifier', edit_user_path(@user), data: { turbo_frame: '_top' } %>
-<%= button_to 'Supprimer mon compte', user_path(@user), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+<section class="user-profile">
+  <div class="email">
+    <p><strong>Adresse email</strong></p>
+    <p><%= @user.email %></p>
+  </div>
+  <div class="username">
+    <p><strong>Nom d'utilisateur</strong></p>
+    <p><%= @user.username %></p>
+  </div>
+</section>
+<span class="actions-buttons">
+  <%= link_to 'Modifier', edit_user_path(@user), data: { turbo_frame: '_top' }, class: "btn btn-primary" %>
+  <%= button_to 'Supprimer mon compte', user_path(@user), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: "btn btn-danger" %>
+</span>

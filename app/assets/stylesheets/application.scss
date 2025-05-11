@@ -2,11 +2,3 @@
 @import '@shoelace-style/shoelace/dist/themes/dark'; // Optional dark theme
 @import '@shoelace-style/shoelace/dist/themes/light';
 */
-.unauthorized-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;
-}

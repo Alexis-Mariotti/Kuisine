@@ -1,6 +1,6 @@
 <div class="recipe-card">
   <h3><%= link_to recipe.title, recipe_path(recipe) %></h3>
-  <span class="number-of-views">
+  <span class="views-count">
     <%= pluralize(recipe.total_views, "vue") %>
   </span>
   <ul class="ingredients">

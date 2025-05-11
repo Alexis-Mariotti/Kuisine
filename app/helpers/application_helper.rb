@@ -29,18 +29,18 @@ module ApplicationHelper
   end
 
   # methode to display the login button or logout button
-  def login_button
+  def login_button(text = "Connexion", class_name = "btn btn-primary")
     if logged_in?
-      button_to "Déconnexion", logout_path, method: :delete, class: "btn btn-danger"
+      button_to "Déconnexion", logout_path, method: :delete, class: "btn btn-primary"
     else
-      link_to "Connexion", login_path, class: "btn btn-primary"
+      link_to text, login_path, class: class_name
     end
   end
 
-  def register_button
+  def register_button(text = "Inscription", class_name = "btn btn-primary")
     if logged_in?
     else
-      link_to "Inscription", signup_path, class: "btn btn-primary"
+      link_to text, signup_path, class: class_name
     end
   end
 
@@ -101,19 +101,19 @@ module ApplicationHelper
   end
 
   # show news link
-  def news_link(news)
-    link_to news.title, news_url(news), class: "btn btn-primary"
+  def news_link(news, class_name = "btn btn-primary")
+    link_to news.title, news_url(news), class: class_name
   end
 
   # news index link
-  def news_index_link
-    link_to "Actualitées", news_index_path, class: "btn btn-primary"
+  def news_index_link(text = "Actualités", class_name = "btn btn-primary")
+    link_to text, news_index_path, class: class_name
   end
 
   # link to forgot password page
   # Only if user is not logged
-  def forgot_password_link
-    link_to "Mot de passe oublié ?", new_password_reset_path,  class: "btn btn-primary"
+  def forgot_password_link(text = "Mot de passe oublié ?", class_name = "btn btn-primary")
+    link_to text, new_password_reset_path,  class: class_name
   end
 
   # method to display error messages in a turbo frame
@@ -122,7 +122,7 @@ module ApplicationHelper
     if !(defined? messages) || messages.nil? || messages.empty?
       return turbo_frame_tag "error_messages"
     end
-    html_message = "<turbo-frame id=\"error_messages\"><ul>"
+    html_message = "<turbo-frame id=\"error_messages\"><ul class=\"error_messages\">"
     messages.each do |message|
       html_message += "<li>#{message}</li>"
     end
@@ -136,7 +136,7 @@ module ApplicationHelper
     if !(defined? messages) || messages.nil? || messages.empty?
       return turbo_frame_tag "info_messages"
     end
-    html_message = "<turbo-frame id=\"info_messages\"><ul>"
+    html_message = "<turbo-frame id=\"info_messages\"><ul class=\"info_messages\">"
     messages.each do |message|
       html_message += "<li>#{message}</li>"
     end

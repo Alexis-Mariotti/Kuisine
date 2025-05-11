@@ -1,10 +1,13 @@
 <h1>Toutes les recettes de Kuisine</h1>
 
 <%= form_with url: public_recipes_path, method: :get, local: false, data: { turbo_frame: "public_recipes_list", controller: "search" } do %>
-  <%= label_tag :research, "Rechercher :" %>
-  <%# Bind search#search on the search bar input to send the form at every input %>
-  <%= text_field_tag :research, params[:research], data: { action: "input->search#search" }%>
-  <%= submit_tag "Rechercher" %>
+  <div class="search-bar">
+    <%= label_tag :research, "Rechercher :" %>
+    <%# Bind search#search on the search bar input to send the form at every input %>
+    <%= text_field_tag :research, params[:research], data: { action: "input->search#search" }%>
+    <%= submit_tag "Rechercher" %>
+  </div>
+
 <% end %>
 
 <%= turbo_frame_tag "public_recipes_list" do %>

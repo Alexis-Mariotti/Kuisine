@@ -35,7 +35,7 @@ export default class extends Controller {
 
             this.resultsTarget.innerHTML = data.map(item => `
             <li>
-              <button type="button" data-action="click->ingredient-search#add" data-name="${item.name}">
+              <button type="button" class="btn" data-action="click->ingredient-search#add" data-name="${item.name}">
                 ${item.name}
               </button>
             </li>
@@ -67,7 +67,7 @@ export default class extends Controller {
         div.setAttribute("data-ingredient-search-target", "ingredient")
         div.innerHTML = `
       <input type="text" name="recipe[ingredients_attributes][${index}][name]" id="recipe_ingredients_attributes_${index}_name" value="${name}" />
-      <button type="button" data-action="click->ingredient-search#removeField">Supprimer</button>
+      <button type="button" class="btn btn-secondary" data-action="click->ingredient-search#removeField">Supprimer</button>
     `
         this.containerTarget.appendChild(div)
 

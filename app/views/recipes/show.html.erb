@@ -4,16 +4,17 @@
   <%= render @recipe %>
 <%end %>
 
-<section class="comments_section">
 <h2>Commentaires</h2>
+<section class="comments_section">
 
-<%= turbo_frame_tag "comments" do %>
-  <%= render @recipe.comments.order(created_at: :desc) %>
-<% end %>
 
-<%# form for new comments, only for logged user %>
-<% if logged_in? %>
-  <%# call the comment form partial %>
-  <%= render "comments/form", recipe: @recipe %>
-<% end %>
+  <%= turbo_frame_tag "comments" do %>
+    <%= render @recipe.comments.order(created_at: :desc) %>
+  <% end %>
+
+  <%# form for new comments, only for logged user %>
+  <% if logged_in? %>
+    <%# call the comment form partial %>
+    <%= render "comments/form", recipe: @recipe %>
+  <% end %>
 </section>

@@ -25,11 +25,13 @@
         <td><%= news.distribution_lists.any? ? "Oui" : "Non" %></td>
         <td><%= l(news.created_at, format: :short) %></td>
         <td>
-          <%=  news_link(news) %>
-          <%= admin_news_edit_link(news) %>
-          <%= button_to "Supprimer", admin_news_path(news), method: :delete,
-                        data: { confirm: "Supprimer cette news ?" },
-                        class: "btn" %>
+          <span class="actions-buttons">
+            <%=  news_link(news) %>
+            <%= admin_news_edit_link(news) %>
+            <%= button_to "Supprimer", admin_news_path(news), method: :delete,
+                          data: { confirm: "Supprimer cette news ?" },
+                          class: "btn btn-danger" %>
+          </span>
         </td>
       </tr>
     <% end %>
