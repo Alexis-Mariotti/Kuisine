@@ -26,5 +26,4 @@ module RecipesHelper
   def spoonacular_img(ingredient, size = "100x100", class_name = "ingredient-image")
     tag.img src: "https://img.spoonacular.com/ingredients_#{size}/#{ingredient.image}", alt: ingredient.name, class: class_name
   end
-
 end
