@@ -176,11 +176,26 @@ input[type="checkbox"]:hover {
         align-items: center;
         gap: 1vh;
     }
-    input[type="text"],
+    input[type="text"]{
+        width: 70vw;
+    }
+
     input[type="password"],
     input[type="email"],
     textarea{
         width: 90vw;
+    }
+}
+
+@media (max-width: 610px) {
+    input[type="text"]{
+        width: 50vw;
+    }
+
+    input[type="password"],
+    input[type="email"],
+    textarea{
+        width: 70vw;
     }
 }
 

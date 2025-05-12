@@ -1,6 +1,9 @@
 <div data-ingredient-search-target="ingredient" class="ingredient-field">
   <%#= ingredient_form.label :name, "Ingrédient" %>
-  <%= ingredient_form.text_field :name %>
+  <div class="ingredient">
+    <%= spoonacular_img(ingredient_form.object, "100x100")%>
+    <%= ingredient_form.text_field :name %>
+  </div>
   <button type="button" class="btn btn-secondary" data-action="click->ingredient-search#removeField">Supprimer</button>
 
   <%# hidden field for manage ingredient deletion in recipe update %>

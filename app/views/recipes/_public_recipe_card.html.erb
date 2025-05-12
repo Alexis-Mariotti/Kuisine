@@ -5,7 +5,10 @@
   </span>
   <ul class="ingredients">
     <% recipe.ingredients.each do |ingredient| %>
-      <li><%= ingredient.name %></li>
+      <li class="ingredient">
+        <%= spoonacular_img(ingredient, "100x100" , "ingredient-image small") %>
+        <p class="text"><%= ingredient.name %></p>
+      </li>
     <% end %>
   </ul>
   <p class="instructions"><%= truncate(recipe.instructions, length: 100) %></p>

@@ -34,6 +34,7 @@
 .ingredient-field{
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 1em;
     margin: 1rem;
 }
@@ -47,7 +48,17 @@
     padding: 0 2vw 0 2vw;
 }
 
-.ingredients li{
+.ingredient{
+    display: flex;
+    flex-direction: row;
+    gap: 4vw;
+    align-items: center;
+    justify-content: start;
+    padding: 0.5rem 0.2rem;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.ingredient .text{
     margin-left: 2vw;
 
     width: fit-content;
@@ -56,5 +67,29 @@
     background-color: var(--color-green-light);
 
     font-size: var(--font-size-small);
+}
+
+.ingredient-image{
+    max-height: 20vh;
+    max-width: 20vw;
+    object-fit: contain;
+}
+
+.ingredient-image small{
+    max-height: 10vh;
+    max-width: 10vw;
+}
+
+@media (max-width: 768px) {
+    .ingredient-image{
+        max-height: 12vh;
+        max-width: 12vw;
+    }
+
+    .ingredient-image small{
+        max-height: 8vh;
+        max-width: 8vw;
+    }
+
 }
 
