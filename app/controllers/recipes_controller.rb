@@ -95,7 +95,7 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:title, :instructions, :id_public,
                                    # _destroy is used to delete an ingredient
-                                   ingredients_attributes: [ :id, :name, :_destroy ])
+                                   ingredients_attributes: [ :id, :name, :image, :_destroy ])
   end
 
   def set_recipe

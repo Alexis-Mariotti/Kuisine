@@ -14,7 +14,7 @@
   <div data-controller="ingredient-search">
     <div class="field search">
       <%= label_tag :ingredient_search, "Rechercher un ingrédient :" %>
-      <%= text_field_tag :ingredient_search, "", placeholder: "ex : tomato", data: { action: "input->ingredient-search#search", ingredient_search_target: "input" } %>
+      <%= text_field_tag :ingredient_search, "", placeholder: "exemple : orange", data: { action: "input->ingredient-search#search", ingredient_search_target: "input" } %>
     </div>
     <ul class="ingredient-ul" data-ingredient-search-target="results"></ul>
 

@@ -11,6 +11,7 @@
     transition: background-color 0.2s ease, color 0.2s ease;
 
     width: fit-content;
+    height: fit-content;
 }
 
 .btn:focus {

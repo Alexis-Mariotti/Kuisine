@@ -35,7 +35,8 @@ export default class extends Controller {
 
             this.resultsTarget.innerHTML = data.map(item => `
             <li>
-              <button type="button" class="btn" data-action="click->ingredient-search#add" data-name="${item.name}">
+              <button type="button" class="btn" data-action="click->ingredient-search#add" data-name="${item.name}" data-image="${item.image}">
+                <img src="https://img.spoonacular.com/ingredients_100x100/${item.image}" class="ingredient-image"/>                
                 ${item.name}
               </button>
             </li>
@@ -56,6 +57,7 @@ export default class extends Controller {
     add(event) {
         // we get the name from the api response
         const name = event.currentTarget.dataset.name
+        const image = event.currentTarget.dataset.image
         // the index is used to create a unique id for the input field
         // we use Date.now() to get a unique number
         const index = Date.now()
@@ -66,7 +68,11 @@ export default class extends Controller {
         div.classList.add("ingredient-field")
         div.setAttribute("data-ingredient-search-target", "ingredient")
         div.innerHTML = `
-      <input type="text" name="recipe[ingredients_attributes][${index}][name]" id="recipe_ingredients_attributes_${index}_name" value="${name}" />
+      <div class="ingredient">
+          <img src="https://img.spoonacular.com/ingredients_100x100/${image}" class="ingredient-image"/>
+          <input type="text" name="recipe[ingredients_attributes][${index}][name]" id="recipe_ingredients_attributes_${index}_name" value="${name}" />
+      </div>
+      <input type="hidden" name="recipe[ingredients_attributes][${index}][image]" value="${image}" />
       <button type="button" class="btn btn-secondary" data-action="click->ingredient-search#removeField">Supprimer</button>
     `
         this.containerTarget.appendChild(div)
