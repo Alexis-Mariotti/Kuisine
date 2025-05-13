@@ -20,11 +20,11 @@
     <tbody>
     <% @news.each do |news| %>
       <tr>
-        <td><%= news.title %></td>
-        <td><%= news.public ? "Oui" : "Non" %></td>
-        <td><%= news.distribution_lists.any? ? "Oui" : "Non" %></td>
-        <td><%= l(news.created_at, format: :short) %></td>
-        <td>
+        <td data-label="Titre" ><%= news.title %></td>
+        <td data-label="Publique ?" ><%= news.public ? "Oui" : "Non" %></td>
+        <td data-label="Envoyée par email ?" ><%= news.distribution_lists.any? ? "Oui" : "Non" %></td>
+        <td data-label="Date de création" ><%= l(news.created_at, format: :short) %></td>
+        <td data-label="Actions" >
           <span class="actions-buttons">
             <%=  news_link(news) %>
             <%= admin_news_edit_link(news) %>

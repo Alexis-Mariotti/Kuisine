@@ -177,7 +177,7 @@ input[type="checkbox"]:hover {
         gap: 1vh;
     }
     input[type="text"]{
-        width: 70vw;
+        width: 60vw;
     }
 
     input[type="password"],
@@ -187,9 +187,21 @@ input[type="checkbox"]:hover {
     }
 }
 
-@media (max-width: 610px) {
+@media (max-width: 650px) {
     input[type="text"]{
         width: 50vw;
+    }
+
+    input[type="password"],
+    input[type="email"],
+    textarea{
+        width: 70vw;
+    }
+}
+
+@media (max-width: 550px) {
+    input[type="text"]{
+        width: 40vw;
     }
 
     input[type="password"],
