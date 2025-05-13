@@ -16,9 +16,17 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
+  # method to redirect to the login page if no user is logged
   def require_login
     unless logged_in?
-      redirect_to login_path, alert: "Vous devez être connecté pour accéder à cette page."
+      respond_to do |format|
+        # redirect with the correct format
+        format.turbo_stream { render partial: "shared/redirect", locals: { url: login_path } }
+        format.html do
+          flash[:alert] = "Vous devez être connecté pour accéder à cette page."
+          redirect_to login_path
+        end
+      end
     end
   end
 
