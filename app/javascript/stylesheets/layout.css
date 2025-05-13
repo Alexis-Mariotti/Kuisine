@@ -151,6 +151,10 @@ a:hover {
     color: var(--color-green-dark);
 }
 
+table{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
 
 
 @media (max-width: 768px) {
@@ -165,5 +169,38 @@ a:hover {
     }
     nav a {
         margin: 3px 2px;
+    }
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+    }
+
+    td {
+        width: 100%;
+        border: none;
+        position: relative;
+        padding-left: 35vw;
+    }
+
+    td:before {
+        position: absolute;
+        left: 6px;
+        content: attr(data-label);
+        font-weight: bold;
     }
 }

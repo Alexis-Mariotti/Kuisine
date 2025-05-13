@@ -14,9 +14,9 @@
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.email %></td>
-      <td><%= user.username %></td>
-      <td>
+      <td data-label="Email"><%= user.email %></td>
+      <td data-label="Nom d'utilisateur"><%= user.username %></td>
+      <td data-label="Actions">
         <span class="actions-buttons">
           <%# TODO : add edit_admin action %>
           <%#= link_to 'Modifier', edit_admin_user_path(user) %>
